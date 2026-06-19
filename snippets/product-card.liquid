@@ -1,0 +1,56 @@
+{%- comment -%}
+  Renders a product card.
+  Usage: {% render 'product-card', product: product %}
+{%- endcomment -%}
+
+<div class="product-card">
+  <a href="{{ product.url }}" class="product-card__media-link">
+    <div class="product-card__media">
+      {%- if product.featured_image -%}
+        {{
+          product.featured_image
+          | image_url: width: 600
+          | image_tag:
+            loading: 'lazy',
+            alt: product.featured_image.alt | escape,
+            class: 'product-card__img'
+        }}
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'product-card__img product-card__img--placeholder' }}
+      {%- endif -%}
+
+      {%- if product.images[1] -%}
+        {{
+          product.images[1]
+          | image_url: width: 600
+          | image_tag:
+            loading: 'lazy',
+            alt: product.images[1].alt | escape,
+            class: 'product-card__img product-card__img--hover'
+        }}
+      {%- endif -%}
+    </div>
+
+    {%- if product.available == false -%}
+      <span class="product-card__badge product-card__badge--sold-out">{{ 'products.product.sold_out' | t }}</span>
+    {%- elsif product.compare_at_price > product.price -%}
+      <span class="product-card__badge product-card__badge--sale">{{ 'products.product.sale' | t }}</span>
+    {%- endif -%}
+  </a>
+
+  <div class="product-card__info">
+    <h3 class="product-card__title">
+      <a href="{{ product.url }}">{{ product.title }}</a>
+    </h3>
+    <div class="product-card__price">
+      {%- if product.price_varies -%}
+        <span>{{ 'products.general.from_price' | t: price: product.price_min | money }}</span>
+      {%- elsif product.compare_at_price > product.price -%}
+        <span class="product-card__price-compare">{{ product.compare_at_price | money }}</span>
+        <span class="product-card__price-sale">{{ product.price | money }}</span>
+      {%- else -%}
+        <span>{{ product.price | money }}</span>
+      {%- endif -%}
+    </div>
+  </div>
+</div>

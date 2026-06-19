@@ -1,0 +1,91 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Pauze",
+    "theme_version": "1.0.0",
+    "theme_author": "Pauze",
+    "theme_documentation_url": "",
+    "theme_support_url": "mailto:contacto@pauze.store"
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "32 × 32px PNG recomendado"
+      }
+    ]
+  },
+  {
+    "name": "Colores",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Color primario (cacao)",
+        "default": "#5A3E2B"
+      },
+      {
+        "type": "color",
+        "id": "color_cta",
+        "label": "Color de botones CTA (verde)",
+        "default": "#3B7A2C"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Fondo principal",
+        "default": "#FFFFFF"
+      }
+    ]
+  },
+  {
+    "name": "Tipografía",
+    "settings": [
+      {
+        "type": "select",
+        "id": "font_size_base",
+        "label": "Tamaño de fuente base",
+        "options": [
+          { "value": "15", "label": "15px" },
+          { "value": "16", "label": "16px (recomendado)" },
+          { "value": "17", "label": "17px" }
+        ],
+        "default": "16"
+      }
+    ]
+  },
+  {
+    "name": "Carrito",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "Tipo de carrito",
+        "options": [
+          { "value": "drawer", "label": "Drawer lateral" },
+          { "value": "page", "label": "Página de carrito" }
+        ],
+        "default": "drawer"
+      }
+    ]
+  },
+  {
+    "name": "Redes sociales",
+    "settings": [
+      {
+        "type": "url",
+        "id": "social_instagram",
+        "label": "Instagram",
+        "default": "https://instagram.com/pauze.ar"
+      },
+      {
+        "type": "url",
+        "id": "social_tiktok",
+        "label": "TikTok"
+      }
+    ]
+  }
+]

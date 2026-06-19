@@ -1,0 +1,150 @@
+<header class="header" data-header>
+  <div class="header__inner container">
+
+    <button class="header__menu-toggle" aria-label="{{ 'header.menu' | t }}" aria-expanded="false" aria-controls="mobile-nav" data-menu-toggle>
+      <span class="header__menu-icon"></span>
+    </button>
+
+    <div class="header__logo">
+      {%- if section.settings.logo != blank -%}
+        <a href="{{ routes.root_url }}">
+          {{
+            section.settings.logo
+            | image_url: width: 300
+            | image_tag:
+              alt: shop.name,
+              loading: 'eager',
+              width: section.settings.logo_width,
+              class: 'header__logo-img'
+          }}
+        </a>
+      {%- else -%}
+        <a href="{{ routes.root_url }}" class="header__logo-text">{{ shop.name }}</a>
+      {%- endif -%}
+    </div>
+
+    <nav class="header__nav" id="desktop-nav" role="navigation" aria-label="Main navigation">
+      <ul class="header__nav-list list-unstyled">
+        {%- for link in section.settings.menu.links -%}
+          <li class="header__nav-item{% if link.links.size > 0 %} header__nav-item--has-dropdown{% endif %}">
+            <a href="{{ link.url }}" class="header__nav-link{% if link.active %} is-active{% endif %}">
+              {{ link.title }}
+              {%- if link.links.size > 0 -%}
+                <span class="header__nav-arrow" aria-hidden="true"></span>
+              {%- endif -%}
+            </a>
+            {%- if link.links.size > 0 -%}
+              <ul class="header__dropdown list-unstyled">
+                {%- for child in link.links -%}
+                  <li>
+                    <a href="{{ child.url }}" class="header__dropdown-link{% if child.active %} is-active{% endif %}">
+                      {{ child.title }}
+                    </a>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    <div class="header__actions">
+      {%- if section.settings.show_search -%}
+        <button class="header__action-btn" aria-label="{{ 'header.search' | t }}" data-search-toggle>
+          {% render 'icon-search' %}
+        </button>
+      {%- endif -%}
+
+      {%- if shop.customer_accounts_enabled -%}
+        <a
+          href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+          class="header__action-btn"
+          aria-label="{{ 'header.account' | t }}"
+        >
+          {% render 'icon-account' %}
+        </a>
+      {%- endif -%}
+
+      <a href="{{ routes.cart_url }}" class="header__action-btn header__cart-btn" aria-label="{{ 'header.cart' | t }}" data-cart-toggle>
+        {% render 'icon-cart' %}
+        <span class="header__cart-count{% if cart.item_count == 0 %} hidden{% endif %}" data-cart-count>
+          {{ cart.item_count }}
+        </span>
+      </a>
+    </div>
+
+  </div>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true" data-mobile-nav>
+    <ul class="mobile-nav__list list-unstyled">
+      {%- for link in section.settings.menu.links -%}
+        <li class="mobile-nav__item">
+          {%- if link.links.size > 0 -%}
+            <button class="mobile-nav__link mobile-nav__link--toggle" aria-expanded="false">
+              {{ link.title }}
+              <span class="mobile-nav__arrow" aria-hidden="true"></span>
+            </button>
+            <ul class="mobile-nav__sub-list list-unstyled">
+              {%- for child in link.links -%}
+                <li>
+                  <a href="{{ child.url }}" class="mobile-nav__sub-link">{{ child.title }}</a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- else -%}
+            <a href="{{ link.url }}" class="mobile-nav__link{% if link.active %} is-active{% endif %}">
+              {{ link.title }}
+            </a>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </nav>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "class": "section-header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Logo width",
+      "min": 50,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "default": 150
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Main menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Show search icon",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "header_position",
+      "label": "Header position",
+      "options": [
+        { "value": "static", "label": "Static" },
+        { "value": "sticky", "label": "Sticky" }
+      ],
+      "default": "sticky"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,165 @@
+<section class="pauze-faq pauze-section pauze-bg-off-white" id="faq">
+  <div class="pauze-container">
+
+    <div class="pauze-section-header">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="pauze-eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      <h2 class="pauze-h2">{{ section.settings.title }}</h2>
+    </div>
+
+    <div class="pauze-faq__inner">
+      <div class="pauze-accordion">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'faq_item' -%}
+          <details class="pauze-accordion__item" {{ block.shopify_attributes }} data-pauze-faq>
+            <summary class="pauze-accordion__trigger">
+              {{ block.settings.question }}
+              <span class="pauze-accordion__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="pauze-accordion__content">
+              {{ block.settings.answer }}
+            </div>
+          </details>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      {%- if section.settings.see_all_text != blank -%}
+        <div class="pauze-faq__footer">
+          <a href="{{ section.settings.see_all_url }}" class="pauze-faq__see-all">
+            {{ section.settings.see_all_text }}
+          </a>
+        </div>
+      {%- endif -%}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .pauze-faq__inner {
+    max-width: 720px;
+    margin-inline: auto;
+  }
+
+  .pauze-faq__footer {
+    margin-top: 1.75rem;
+    text-align: center;
+  }
+
+  .pauze-faq__see-all {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--pauze-verde-dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color var(--transition);
+  }
+
+  .pauze-faq__see-all:hover { color: var(--pauze-verde); }
+
+  /* Remove default details arrow */
+  details > summary { list-style: none; }
+  details > summary::-webkit-details-marker { display: none; }
+</style>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "Pregunta",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Pregunta",
+          "default": "¿Tiene melatonina?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Respuesta",
+          "default": "<p>No. La melatonina en Argentina se considera medicamento y requiere receta. Pauze usa activos botánicos y aminoácidos (L-teanina, apigenina, magnesio glicinato) que acompañan los procesos naturales del cuerpo para entrar al sueño.</p>"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Respuestas claras"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Las preguntas más frecuentes"
+    },
+    {
+      "type": "text",
+      "id": "see_all_text",
+      "label": "Texto ver todas",
+      "default": "Ver todas las preguntas →"
+    },
+    {
+      "type": "url",
+      "id": "see_all_url",
+      "label": "Link ver todas"
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Tiene melatonina?",
+            "answer": "<p>No. La melatonina en Argentina se considera medicamento y requiere receta. Pauze usa activos botánicos y aminoácidos (L-teanina, apigenina, magnesio glicinato) que acompañan los procesos naturales del cuerpo para entrar al sueño.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿En cuánto tiempo voy a notar la diferencia?",
+            "answer": "<p>La mayoría nota mejoría en la primera semana, sobre todo en lo rápido que se duerme. Los efectos más profundos (menos despertares, descanso reparador) suelen verse a partir de las 3 semanas de uso consistente.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Cómo se prepara?",
+            "answer": "<p>Calentá 200ml de la leche que prefieras (vaca, almendra, avena). Sumá un scoop (10g) directo a la taza. Batí 30 segundos con cuchara, frother o licuadora. Tomalo despacio, 30-45 minutos antes de dormir.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Y si no me funciona?",
+            "answer": "<p>Tenés 14 noches de garantía. Tomalo durante esas 14 noches. Si no notás diferencia, te devolvemos el monto como crédito en la tienda (válido 6 meses). No tenés que devolver el pack.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Cómo funciona la suscripción mensual?",
+            "answer": "<p>Te llega un pack todos los meses con 20% off siempre ($31.900 vs $39.900), envío gratis y la guía PDF \"30 noches de ritual\" gratis. Cancelás cuando quieras, sin permanencia.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Cuánto tarda mi pedido?",
+            "answer": "<p>Despachamos en 7 a 15 días hábiles desde la confirmación del pago. CABA y GBA suele llegar antes (3-7 días). Interior puede llegar hasta los 15 días según localidad.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

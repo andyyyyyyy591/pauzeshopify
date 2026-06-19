@@ -1,0 +1,443 @@
+/* =============================================================================
+   PAUZE — BASE CSS
+   Variables · Reset · Tipografía · Utilidades · Layout
+   ============================================================================= */
+
+/* 1. CSS CUSTOM PROPERTIES
+   --------------------------------------------------------------------------- */
+:root {
+  /* Blancos — Fondos */
+  --pauze-white: #FFFFFF;
+  --pauze-off-white: #FAFAF8;
+
+  /* Cacao — Titulares, header, footer, bloques premium */
+  --pauze-cacao: #5A3E2B;
+  --pauze-cacao-dark: #3D2C1F;
+  --pauze-cacao-deep: #2E1F14;
+  --pauze-cacao-light: #8B6A52;
+
+  /* Sutiles — Bordes, separadores */
+  --pauze-arena: #E6D8C8;
+  --pauze-crema: #F6F1E9;
+
+  /* Verde — CTAs, botones, interactivos */
+  --pauze-verde: #3B7A2C;
+  --pauze-verde-dark: #2A5C20;
+  --pauze-verde-pale: #DBE8CC;
+
+  /* Texto */
+  --pauze-off-black: #1A1612;
+  --pauze-gris: #8A837C;
+  --pauze-gris-dark: #5C5650;
+
+  /* Dorado — SOLO estrellas de rating */
+  --pauze-dorado: #C9954E;
+
+  /* Tipografía */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
+
+  /* Espaciado */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+
+  /* Layout */
+  --container-max: 1280px;
+  --container-pad: 1.25rem;
+  --header-h: 64px;
+
+  /* Radios */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* Transiciones */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: 250ms var(--ease);
+}
+
+/* 2. RESET MOBILE-FIRST
+   --------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--pauze-off-black);
+  background-color: var(--pauze-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  border: none;
+  background: none;
+}
+
+button {
+  cursor: pointer;
+  line-height: 1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--pauze-cacao);
+}
+
+p, li {
+  max-width: 70ch;
+}
+
+/* 3. TIPOGRAFÍA
+   --------------------------------------------------------------------------- */
+
+/* Display — Cormorant Garamond Italic */
+.pauze-h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6.5vw, 4.5rem);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.05;
+  color: var(--pauze-cacao);
+}
+
+.pauze-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.8vw, 3rem);
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.1;
+  color: var(--pauze-cacao);
+}
+
+.pauze-h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+  font-weight: 600;
+  font-style: italic;
+  color: var(--pauze-cacao);
+}
+
+/* Eyebrow — DM Sans uppercase */
+.pauze-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pauze-verde-dark);
+}
+
+/* Body */
+.pauze-body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--pauze-off-black);
+}
+
+.pauze-body--sm {
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.pauze-body--muted {
+  color: var(--pauze-gris);
+}
+
+/* Texto sobre fondo oscuro */
+.pauze-on-dark {
+  color: var(--pauze-crema);
+}
+
+.pauze-on-dark h1,
+.pauze-on-dark h2,
+.pauze-on-dark h3,
+.pauze-on-dark .pauze-h1,
+.pauze-on-dark .pauze-h2,
+.pauze-on-dark .pauze-h3 {
+  color: var(--pauze-crema);
+}
+
+/* 4. LAYOUT
+   --------------------------------------------------------------------------- */
+.pauze-container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+.pauze-section {
+  padding-block: clamp(3rem, 6vw, 5rem);
+}
+
+.pauze-section--sm {
+  padding-block: clamp(2rem, 4vw, 3rem);
+}
+
+.pauze-section--lg {
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+
+/* Fondo alternado */
+.pauze-bg-white { background-color: var(--pauze-white); }
+.pauze-bg-off-white { background-color: var(--pauze-off-white); }
+.pauze-bg-cacao { background-color: var(--pauze-cacao); }
+.pauze-bg-cacao-dark { background-color: var(--pauze-cacao-dark); }
+.pauze-bg-cacao-deep { background-color: var(--pauze-cacao-deep); }
+.pauze-bg-verde {
+  background: linear-gradient(135deg, var(--pauze-verde-dark), var(--pauze-verde));
+}
+
+/* Section header centrado */
+.pauze-section-header {
+  text-align: center;
+  max-width: 640px;
+  margin-inline: auto;
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.pauze-section-header .pauze-eyebrow {
+  margin-bottom: 0.75rem;
+}
+
+.pauze-section-header .pauze-h2 {
+  margin-bottom: 1rem;
+}
+
+.pauze-section-header p {
+  max-width: 100%;
+  color: var(--pauze-gris-dark);
+}
+
+/* 5. UTILIDADES
+   --------------------------------------------------------------------------- */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.list-reset {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 9999;
+  padding: 0.75rem 1.5rem;
+  background: var(--pauze-verde);
+  color: var(--pauze-white);
+  font-weight: 600;
+  border-radius: 0 0 var(--radius-sm) 0;
+  transition: top 0.15s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Texto con highlight italic (H2 segunda parte) */
+em, .italic {
+  font-style: italic;
+}
+
+/* Underline animado en links */
+.pauze-link-animated {
+  position: relative;
+  display: inline-block;
+}
+
+.pauze-link-animated::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width var(--transition);
+}
+
+.pauze-link-animated:hover::after {
+  width: 100%;
+}
+
+/* Divider */
+.pauze-divider {
+  border: none;
+  border-top: 1px solid var(--pauze-arena);
+  margin: 0;
+}
+
+/* RTE (rich text editor content) */
+.rte {
+  max-width: 65ch;
+}
+.rte a { text-decoration: underline; }
+.rte ul, .rte ol { margin-left: 1.5rem; list-style: initial; }
+.rte ol { list-style: decimal; }
+.rte p, .rte ul, .rte ol, .rte h2, .rte h3 { margin-bottom: var(--space-md); }
+.rte p:last-child { margin-bottom: 0; }
+
+/* 6. FORMS BASE
+   --------------------------------------------------------------------------- */
+.pauze-input,
+.pauze-select,
+.pauze-textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--pauze-arena);
+  border-radius: var(--radius-sm);
+  background: var(--pauze-white);
+  color: var(--pauze-off-black);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+}
+
+.pauze-input:focus,
+.pauze-select:focus,
+.pauze-textarea:focus {
+  border-color: var(--pauze-verde);
+  box-shadow: 0 0 0 3px rgba(59, 122, 44, 0.12);
+}
+
+.pauze-input::placeholder {
+  color: var(--pauze-gris);
+}
+
+/* Input pill (footer newsletter) */
+.pauze-input--pill {
+  border-radius: var(--radius-full);
+  padding-inline: 1.25rem;
+}
+
+/* 7. IMAGEN PLACEHOLDER
+   --------------------------------------------------------------------------- */
+.pauze-placeholder {
+  width: 100%;
+  height: 100%;
+  background: var(--pauze-cacao);
+  border-radius: inherit;
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+.pauze-placeholder::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.04) 0%,
+    rgba(255,255,255,0) 50%,
+    rgba(0,0,0,0.06) 100%
+  );
+  border-radius: inherit;
+}
+
+/* Aspect ratios */
+.pauze-aspect-1-1    { aspect-ratio: 1 / 1; }
+.pauze-aspect-4-5    { aspect-ratio: 4 / 5; }
+.pauze-aspect-16-9   { aspect-ratio: 16 / 9; }
+.pauze-aspect-16-10  { aspect-ratio: 16 / 10; }
+.pauze-aspect-3-2    { aspect-ratio: 3 / 2; }
+
+/* 8. SCROLL
+   --------------------------------------------------------------------------- */
+html {
+  scroll-padding-top: calc(var(--header-h) + 1rem);
+}
+
+/* 9. RESPONSIVE — BREAKPOINTS BASE
+   --------------------------------------------------------------------------- */
+@media (min-width: 640px) {
+  :root {
+    --container-pad: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --container-pad: 2rem;
+    --header-h: 72px;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --container-pad: 2.5rem;
+  }
+}

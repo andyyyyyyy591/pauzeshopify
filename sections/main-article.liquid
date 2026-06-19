@@ -1,0 +1,33 @@
+<article class="article">
+  <div class="article__inner container">
+    <header class="article__header">
+      {%- if article.image -%}
+        {{
+          article.image
+          | image_url: width: 1200
+          | image_tag: loading: 'eager', class: 'article__hero-img', alt: article.title | escape
+        }}
+      {%- endif -%}
+      <h1 class="article__title">{{ article.title }}</h1>
+      <p class="article__meta">
+        <span>{{ article.published_at | date: '%B %d, %Y' }}</span>
+        <span>{{ 'blogs.article.written_by' | t }} {{ article.author }}</span>
+      </p>
+    </header>
+
+    <div class="article__content rte">{{ article.content }}</div>
+
+    <div class="article__footer">
+      <a href="{{ blog.url }}" class="article__back-link">
+        &larr; {{ 'blogs.article.back_to_blog' | t }}
+      </a>
+    </div>
+  </div>
+</article>
+
+{% schema %}
+{
+  "name": "Article",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,131 @@
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+{%- assign product_form_id = 'product-form-' | append: section.id -%}
+
+<section class="product" data-section-id="{{ section.id }}">
+  <div class="product__inner container">
+
+    <div class="product__media">
+      {%- if product.featured_media -%}
+        <div class="product__media-main">
+          {{
+            product.featured_media
+            | image_url: width: 900
+            | image_tag:
+              loading: 'eager',
+              class: 'product__image',
+              id: 'product-featured-image',
+              alt: product.featured_media.alt | escape
+          }}
+        </div>
+        {%- if product.images.size > 1 -%}
+          <div class="product__media-thumbs">
+            {%- for image in product.images -%}
+              <button
+                class="product__thumb-btn{% if forloop.first %} is-active{% endif %}"
+                data-image-id="{{ image.id }}"
+                data-image-url="{{ image | image_url: width: 900 }}"
+                aria-label="{{ image.alt | escape }}"
+              >
+                {{
+                  image
+                  | image_url: width: 150
+                  | image_tag: loading: 'lazy', alt: image.alt | escape, class: 'product__thumb-img'
+                }}
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      {%- else -%}
+        <div class="product__media-placeholder">{{ 'product-1' | placeholder_svg_tag }}</div>
+      {%- endif -%}
+    </div>
+
+    <div class="product__info">
+      <p class="product__vendor">{{ product.vendor }}</p>
+      <h1 class="product__title">{{ product.title }}</h1>
+
+      <div class="product__price" data-price-wrapper>
+        {%- if current_variant.compare_at_price > current_variant.price -%}
+          <span class="product__price-compare">{{ current_variant.compare_at_price | money }}</span>
+          <span class="product__price-sale">{{ current_variant.price | money }}</span>
+          <span class="badge badge--sale">{{ 'products.product.sale' | t }}</span>
+        {%- else -%}
+          <span class="product__price-regular">{{ current_variant.price | money }}</span>
+        {%- endif -%}
+      </div>
+
+      {%- unless product.has_only_default_variant -%}
+        <div class="product__variants">
+          {%- for option in product.options_with_values -%}
+            <div class="product__option">
+              <label class="product__option-label" for="option-{{ option.name | handleize }}">
+                {{ option.name }}
+              </label>
+              <select
+                id="option-{{ option.name | handleize }}"
+                class="product__option-select"
+                name="options[{{ option.name | escape }}]"
+              >
+                {%- for value in option.values -%}
+                  <option
+                    value="{{ value | escape }}"
+                    {% if option.selected_value == value %}selected{% endif %}
+                  >{{ value }}</option>
+                {%- endfor -%}
+              </select>
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endunless -%}
+
+      {%- form 'product', product, id: product_form_id, data-product-form: '' -%}
+        <input type="hidden" name="id" value="{{ current_variant.id }}" data-variant-id>
+
+        <div class="product__quantity">
+          <label for="quantity" class="product__quantity-label">{{ 'products.product.quantity' | t }}</label>
+          <div class="product__quantity-input">
+            <button type="button" class="product__qty-btn" data-qty-minus aria-label="Decrease quantity">-</button>
+            <input type="number" id="quantity" name="quantity" value="1" min="1" class="product__qty-field">
+            <button type="button" class="product__qty-btn" data-qty-plus aria-label="Increase quantity">+</button>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn--primary btn--full product__add-to-cart"
+          {% unless current_variant.available %}disabled{% endunless %}
+          data-add-to-cart
+        >
+          <span data-add-to-cart-text>
+            {%- if current_variant.available -%}
+              {{ 'products.product.add_to_cart' | t }}
+            {%- else -%}
+              {{ 'products.product.sold_out' | t }}
+            {%- endif -%}
+          </span>
+        </button>
+      {%- endform -%}
+
+      {%- if section.settings.show_description and product.description != blank -%}
+        <div class="product__description rte">
+          {{ product.description }}
+        </div>
+      {%- endif -%}
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product information",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_description",
+      "label": "Show description",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

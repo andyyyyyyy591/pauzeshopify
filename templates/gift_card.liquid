@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ 'gift_cards.issued.title' | t: value: gift_card.initial_value | money_without_trailing_zeros, shop: shop.name }}</title>
+    {{ content_for_header }}
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
+  </head>
+  <body class="template-giftcard">
+    <div class="gift-card">
+      <div class="gift-card__inner container">
+        <h1 class="gift-card__title">{{ shop.name }} &ndash; Gift Card</h1>
+        <div class="gift-card__value">{{ gift_card.initial_value | money_without_trailing_zeros }}</div>
+        <div class="gift-card__code-wrapper">
+          <p class="gift-card__code">{{ gift_card.code | format_code }}</p>
+        </div>
+        {%- if gift_card.expired or gift_card.enabled == false -%}
+          <p class="gift-card__expired">This gift card has expired or been disabled.</p>
+        {%- endif -%}
+        <p class="gift-card__balance">
+          Remaining balance: {{ gift_card.balance | money }}
+        </p>
+        <div class="gift-card__qr">
+          <img src="{{ gift_card | qr_code: 200 }}" alt="QR code">
+        </div>
+        <a href="{{ shop.url }}" class="btn btn--primary">Start Shopping</a>
+      </div>
+    </div>
+  </body>
+</html>

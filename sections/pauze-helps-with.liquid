@@ -1,0 +1,207 @@
+<section class="pauze-helps pauze-section pauze-bg-white" id="como-funciona">
+  <div class="pauze-container">
+
+    <div class="pauze-section-header">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="pauze-eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      <h2 class="pauze-h2">{{ section.settings.title }}</h2>
+    </div>
+
+    <div class="pauze-helps__grid">
+      {%- for block in section.blocks -%}
+        <div class="pauze-helps__item" {{ block.shopify_attributes }}>
+          <div class="pauze-helps__icon-wrap" aria-hidden="true">
+            <span class="pauze-helps__emoji">{{ block.settings.emoji }}</span>
+          </div>
+          <p class="pauze-helps__label">{{ block.settings.label }}</p>
+          <p class="pauze-helps__desc">{{ block.settings.description }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.cta_text != blank -%}
+      <div class="pauze-helps__cta">
+        <a href="{{ section.settings.cta_url }}" class="pauze-btn pauze-btn--primary">
+          {{ section.settings.cta_text }}
+        </a>
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+<style>
+  .pauze-helps__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .pauze-helps__item {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid transparent;
+    transition: all var(--transition);
+  }
+
+  .pauze-helps__item:hover {
+    background: var(--pauze-off-white);
+    border-color: var(--pauze-arena);
+  }
+
+  .pauze-helps__icon-wrap {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 1rem;
+    background: var(--pauze-crema);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--transition);
+  }
+
+  .pauze-helps__item:hover .pauze-helps__icon-wrap {
+    transform: scale(1.08);
+  }
+
+  .pauze-helps__emoji {
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  .pauze-helps__label {
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--pauze-cacao);
+    margin-bottom: 0.375rem;
+    max-width: 100%;
+  }
+
+  .pauze-helps__desc {
+    font-size: 0.875rem;
+    color: var(--pauze-gris-dark);
+    line-height: 1.5;
+    max-width: 100%;
+  }
+
+  .pauze-helps__cta {
+    text-align: center;
+  }
+
+  @media (min-width: 640px) {
+    .pauze-helps__grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem 2rem;
+    }
+
+    .pauze-helps__icon-wrap {
+      width: 96px;
+      height: 96px;
+    }
+
+    .pauze-helps__emoji { font-size: 2.5rem; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Te ayuda con",
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Beneficio",
+      "settings": [
+        {
+          "type": "text",
+          "id": "emoji",
+          "label": "Emoji / ícono",
+          "default": "🌙"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label uppercase",
+          "default": "DORMIR MEJOR"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Descripción",
+          "default": "Activos clínicos que acompañan al sueño"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Hacé tu pausa"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Tu ritual nocturno con un solo scoop"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Texto CTA",
+      "default": "COMPRAR AHORA"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Link CTA"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Te ayuda con",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "emoji": "🌙",
+            "label": "DORMIR MEJOR",
+            "description": "Activos clínicos que acompañan al sueño"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "emoji": "🧠",
+            "label": "BAJAR LA MENTE",
+            "description": "L-teanina + apigenina para apagar la cabeza"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "emoji": "🍫",
+            "label": "POSTRE NOCTURNO",
+            "description": "Sin culpa, sin azúcar agregada"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "emoji": "🌅",
+            "label": "SIN RESACA",
+            "description": "Te despertás claro/a, no embotado/a"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

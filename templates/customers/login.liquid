@@ -1,0 +1,25 @@
+<section class="customer-page">
+  <div class="customer-page__inner container">
+    <h1 class="customer-page__title">{{ 'customer.login.title' | t }}</h1>
+
+    {%- form 'customer_login' -%}
+      {%- if form.errors -%}
+        <div class="form-errors">{{ form.errors | default_errors }}</div>
+      {%- endif -%}
+      <div class="form-field">
+        <label for="email">{{ 'customer.login.email' | t }}</label>
+        <input type="email" id="email" name="customer[email]" autocomplete="email" required>
+      </div>
+      <div class="form-field">
+        <label for="password">{{ 'customer.login.password' | t }}</label>
+        <input type="password" id="password" name="customer[password]" autocomplete="current-password" required>
+      </div>
+      <button type="submit" class="btn btn--primary btn--full">{{ 'customer.login.submit' | t }}</button>
+    {%- endform -%}
+
+    <div class="customer-page__links">
+      <a href="{{ routes.account_recover_url }}">{{ 'customer.login.forgot_password' | t }}</a>
+      <a href="{{ routes.account_register_url }}">{{ 'customer.login.no_account' | t }}</a>
+    </div>
+  </div>
+</section>

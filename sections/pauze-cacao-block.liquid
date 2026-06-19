@@ -1,0 +1,216 @@
+<section class="pauze-cacao-blk pauze-section pauze-bg-cacao-dark" id="ingredientes">
+  <div class="pauze-container">
+    <div class="pauze-cacao-blk__inner">
+
+      {{- /* Imagen izquierda */ -}}
+      <div class="pauze-cacao-blk__media">
+        {%- if section.settings.image != blank -%}
+          {{
+            section.settings.image
+            | image_url: width: 800
+            | image_tag:
+              loading: 'lazy',
+              width: 800,
+              height: 1000,
+              alt: section.settings.image_alt | default: 'Pauze',
+              class: 'pauze-cacao-blk__img'
+          }}
+        {%- else -%}
+          <div class="pauze-placeholder pauze-cacao-blk__placeholder" aria-hidden="true"></div>
+        {%- endif -%}
+      </div>
+
+      {{- /* Contenido derecha */ -}}
+      <div class="pauze-cacao-blk__content pauze-on-dark">
+        <p class="pauze-cacao-blk__eyebrow">{{ section.settings.eyebrow }}</p>
+        <h2 class="pauze-h2 pauze-cacao-blk__title">{{ section.settings.title }}</h2>
+        <p class="pauze-cacao-blk__subtitle">{{ section.settings.subtitle }}</p>
+
+        <div class="pauze-cacao-blk__stats">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'stat' -%}
+            <div class="pauze-cacao-blk__stat" {{ block.shopify_attributes }}>
+              <span class="pauze-cacao-blk__stat-number">{{ block.settings.number }}</span>
+              <span class="pauze-cacao-blk__stat-label">{{ block.settings.label }}</span>
+            </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        {%- if section.settings.cta_text != blank -%}
+          <a href="{{ section.settings.cta_url }}" class="pauze-btn pauze-btn--outline-crema">
+            {{ section.settings.cta_text }}
+          </a>
+        {%- endif -%}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .pauze-cacao-blk__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  .pauze-cacao-blk__img,
+  .pauze-cacao-blk__placeholder {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius-lg);
+    object-fit: cover;
+    display: block;
+  }
+
+  .pauze-cacao-blk__eyebrow {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pauze-cacao-light);
+    margin-bottom: 0.875rem;
+  }
+
+  .pauze-cacao-blk__title {
+    color: var(--pauze-crema);
+    margin-bottom: 1rem;
+  }
+
+  .pauze-cacao-blk__subtitle {
+    font-size: 0.9375rem;
+    color: rgba(246, 241, 233, 0.7);
+    line-height: 1.65;
+    margin-bottom: 2rem;
+    max-width: 52ch;
+  }
+
+  .pauze-cacao-blk__stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem 2.5rem;
+    margin-bottom: 2.25rem;
+  }
+
+  .pauze-cacao-blk__stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .pauze-cacao-blk__stat-number {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-style: italic;
+    font-weight: 700;
+    color: var(--pauze-crema);
+    line-height: 1;
+  }
+
+  .pauze-cacao-blk__stat-label {
+    font-size: 0.8125rem;
+    color: var(--pauze-cacao-light);
+    font-weight: 500;
+    max-width: 100%;
+  }
+
+  @media (min-width: 900px) {
+    .pauze-cacao-blk__inner {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .pauze-cacao-blk__img,
+    .pauze-cacao-blk__placeholder {
+      max-height: 560px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Bloque cacao premium",
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Estadística",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Número / dato",
+          "default": "3"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Descripción",
+          "default": "Activos clínicos declarados"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagen (lifestyle)"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Alt de imagen"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "NUESTRO MÉTODO"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Título",
+      "default": "<p>Activos con evidencia real, <em>no marketing.</em></p>"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtítulo",
+      "default": "Tres activos con estudios clínicos publicados, en dosis que realmente hacen efecto. No infusiones, no dosis mínimas simbólicas."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Texto CTA",
+      "default": "VER INGREDIENTES"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Link CTA"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bloque cacao premium",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": { "number": "3", "label": "Activos clínicos declarados" }
+        },
+        {
+          "type": "stat",
+          "settings": { "number": "+340", "label": "Personas tomando Pauze" }
+        },
+        {
+          "type": "stat",
+          "settings": { "number": "100%", "label": "Hecho en Argentina" }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

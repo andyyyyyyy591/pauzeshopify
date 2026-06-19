@@ -1,0 +1,289 @@
+{
+  "sections": {
+    "hero": {
+      "type": "pauze-home-hero",
+      "settings": {
+        "eyebrow": "PAUZE PM BLEND · 30 NOCHES",
+        "title": "<p>Apagá la noche.<br><em>Hacé tu pausa.</em></p>",
+        "subtitle": "Tu postre nocturno con L-teanina, apigenina y magnesio. Sin melatonina, sin azúcar agregada, sin resaca.",
+        "cta_primary_text": "COMPRAR · $39.900",
+        "cta_secondary_text": "Cómo funciona →",
+        "show_social_proof": true,
+        "social_proof_text": "+340 personas ya hacen su pausa · 4.9 ★"
+      }
+    },
+    "benefits": {
+      "type": "pauze-helps-with",
+      "blocks": {
+        "b1": {
+          "type": "benefit",
+          "settings": {
+            "emoji": "🌙",
+            "label": "DORMIR MEJOR",
+            "description": "Activos clínicos que acompañan al sueño"
+          }
+        },
+        "b2": {
+          "type": "benefit",
+          "settings": {
+            "emoji": "🧠",
+            "label": "BAJAR LA MENTE",
+            "description": "L-teanina + apigenina para apagar la cabeza"
+          }
+        },
+        "b3": {
+          "type": "benefit",
+          "settings": {
+            "emoji": "🍫",
+            "label": "POSTRE NOCTURNO",
+            "description": "Sin culpa, sin azúcar agregada"
+          }
+        },
+        "b4": {
+          "type": "benefit",
+          "settings": {
+            "emoji": "🌅",
+            "label": "SIN RESACA",
+            "description": "Te despertás claro/a, no embotado/a"
+          }
+        }
+      },
+      "blocks_order": ["b1", "b2", "b3", "b4"],
+      "settings": {
+        "eyebrow": "Hacé tu pausa",
+        "title": "Tu ritual nocturno con un solo scoop",
+        "cta_text": "COMPRAR AHORA"
+      }
+    },
+    "packs": {
+      "type": "pauze-packs",
+      "blocks": {
+        "pack1": {
+          "type": "pack",
+          "settings": {
+            "eyebrow": "1 MES · 30 NOCHES",
+            "title": "Pack Individual",
+            "description": "1 doypack · 30 noches de ritual",
+            "price": "$39.900",
+            "cta_text": "COMPRAR AHORA"
+          }
+        },
+        "pack2": {
+          "type": "pack",
+          "settings": {
+            "eyebrow": "2 MESES · 60 NOCHES",
+            "title": "Pack x2",
+            "description": "2 doypacks · 60 noches · El más elegido",
+            "compare_price": "$79.800",
+            "price": "$69.900",
+            "save_text": "Ahorrás $9.900",
+            "tag": "MÁS ELEGIDO",
+            "is_featured": true,
+            "cta_text": "COMPRAR AHORA"
+          }
+        },
+        "pack3": {
+          "type": "pack",
+          "settings": {
+            "eyebrow": "3 MESES · 90 NOCHES",
+            "title": "Pack x3",
+            "description": "3 doypacks + Frother eléctrico de regalo",
+            "compare_price": "$119.700",
+            "price": "$99.900",
+            "save_text": "Ahorrás $19.800",
+            "tag": "MEJOR PRECIO",
+            "cta_text": "COMPRAR AHORA"
+          }
+        }
+      },
+      "blocks_order": ["pack1", "pack2", "pack3"],
+      "settings": {
+        "eyebrow": "Elegí el tuyo",
+        "title": "Encontrá tu pack"
+      }
+    },
+    "cacao_block": {
+      "type": "pauze-cacao-block",
+      "blocks": {
+        "s1": {
+          "type": "stat",
+          "settings": { "number": "3", "label": "Activos clínicos declarados" }
+        },
+        "s2": {
+          "type": "stat",
+          "settings": { "number": "+340", "label": "Personas tomando Pauze" }
+        },
+        "s3": {
+          "type": "stat",
+          "settings": { "number": "100%", "label": "Hecho en Argentina" }
+        }
+      },
+      "blocks_order": ["s1", "s2", "s3"],
+      "settings": {
+        "eyebrow": "NUESTRO MÉTODO",
+        "title": "<p>Activos con evidencia real, <em>no marketing.</em></p>",
+        "subtitle": "Tres activos con estudios clínicos publicados, en dosis que realmente hacen efecto. No infusiones, no dosis mínimas simbólicas.",
+        "cta_text": "VER INGREDIENTES"
+      }
+    },
+    "testimonials": {
+      "type": "pauze-testimonials",
+      "blocks": {
+        "t1": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Por fin dejé el alfajor de las 11",
+            "body": "Hace dos meses lo tomo todas las noches. Cambié el alfajor de las 11 por algo que me hace bien. Además duermo mucho mejor desde la primera semana.",
+            "author": "Martín G.",
+            "verified": true
+          }
+        },
+        "t2": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Sin resaca al despertar",
+            "body": "Probé melatonina por meses y siempre me levantaba dopado. Pauze no me deja esa sensación rara. Me despierto bien, con energía.",
+            "author": "Mariana V.",
+            "verified": true
+          }
+        },
+        "t3": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Mi cabeza por fin se apaga",
+            "body": "Trabajo en turnos rotativos. A los 4 días me dormí sin darme cuenta. Hace 3 semanas que duermo así, sin importar el turno.",
+            "author": "Nicolás R.",
+            "verified": true
+          }
+        },
+        "t4": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Es un ritual hermoso",
+            "body": "Más allá del efecto, el ritual mismo me cambió la noche. Antes con el celu hasta las 2am. Ahora a las 11 ya me estoy durmiendo.",
+            "author": "Camila P.",
+            "verified": true
+          }
+        },
+        "t5": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Lo recomendó mi nutricionista",
+            "body": "Me indicaba magnesio glicinato y L-teanina por separado. Cuando le mostré Pauze me dijo que tenía las dosis correctas.",
+            "author": "Julián A.",
+            "verified": true
+          }
+        },
+        "t6": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Estaba escéptico",
+            "body": "Compré por la garantía de 14 noches. No tuve que devolver nada. Voy por mi tercer pack y se lo recomendé a dos amigos.",
+            "author": "Bruno T.",
+            "verified": true
+          }
+        }
+      },
+      "blocks_order": ["t1", "t2", "t3", "t4", "t5", "t6"],
+      "settings": {
+        "eyebrow": "Lo que dicen quienes ya hicieron su pausa",
+        "title": "Más de 340 personas duermen mejor",
+        "rating_text": "4.9 · +340 reseñas verificadas"
+      }
+    },
+    "science": {
+      "type": "pauze-science-backed",
+      "blocks": {
+        "p1": {
+          "type": "paper",
+          "settings": {
+            "journal": "Asia Pacific J Clin Nutr",
+            "year": "· 2008",
+            "title": "L-teanina y ondas alpha cerebrales",
+            "finding": "La L-teanina (200mg) aumenta significativamente la actividad de ondas alpha — el patrón asociado a la relajación atenta sin sedación."
+          }
+        },
+        "p2": {
+          "type": "paper",
+          "settings": {
+            "journal": "Phytomedicine",
+            "year": "· 2019",
+            "title": "Apigenina y receptores GABA",
+            "finding": "La apigenina se une a receptores GABA-A en el cerebro, produciendo efectos ansiolíticos suaves similares a la manzanilla concentrada."
+          }
+        },
+        "p3": {
+          "type": "paper",
+          "settings": {
+            "journal": "J Res Med Sci",
+            "year": "· 2012",
+            "title": "Magnesio y sueño en adultos",
+            "finding": "La suplementación con magnesio mejora significativamente la calidad del sueño, reduce el tiempo de latencia y aumenta el sueño profundo."
+          }
+        }
+      },
+      "blocks_order": ["p1", "p2", "p3"],
+      "settings": {
+        "eyebrow": "Con respaldo científico",
+        "title": "Dosis reales. Estudios reales.",
+        "subtitle": "Los activos de Pauze están respaldados por estudios clínicos publicados en journals revisados por pares.",
+        "disclaimer": "Estos estudios respaldan la eficacia de los activos individualmente. Pauze no es un medicamento ni reemplaza el consejo médico."
+      }
+    },
+    "faq": {
+      "type": "pauze-faq-home",
+      "blocks": {
+        "q1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Tiene melatonina?",
+            "answer": "<p>No. La melatonina en Argentina se considera medicamento y requiere receta. Pauze usa activos botánicos y aminoácidos que acompañan los procesos naturales del cuerpo para entrar al sueño.</p>"
+          }
+        },
+        "q2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿En cuánto tiempo voy a notar la diferencia?",
+            "answer": "<p>La mayoría nota mejoría en la primera semana. Los efectos más profundos suelen verse a partir de las 3 semanas de uso consistente.</p>"
+          }
+        },
+        "q3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Cómo se prepara?",
+            "answer": "<p>Calentá 200ml de la leche que prefieras. Sumá un scoop (10g) directo a la taza. Batí 30 segundos con cuchara, frother o licuadora. Tomalo despacio, 30-45 minutos antes de dormir.</p>"
+          }
+        },
+        "q4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Y si no me funciona?",
+            "answer": "<p>Tenés 14 noches de garantía. Si no notás diferencia, te devolvemos el monto como crédito en la tienda (válido 6 meses). No tenés que devolver el pack.</p>"
+          }
+        },
+        "q5": {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Cómo funciona la suscripción mensual?",
+            "answer": "<p>Te llega un pack todos los meses con 20% off siempre ($31.900 vs $39.900), envío gratis y la guía PDF gratis. Cancelás cuando quieras, sin permanencia.</p>"
+          }
+        },
+        "q6": {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Cuánto tarda mi pedido?",
+            "answer": "<p>Despachamos en 7 a 15 días hábiles desde la confirmación del pago. CABA y GBA suele llegar antes. Interior puede llegar hasta los 15 días.</p>"
+          }
+        }
+      },
+      "blocks_order": ["q1", "q2", "q3", "q4", "q5", "q6"],
+      "settings": {
+        "eyebrow": "Respuestas claras",
+        "title": "Las preguntas más frecuentes",
+        "see_all_text": "Ver todas las preguntas →",
+        "see_all_url": "/pages/faq"
+      }
+    }
+  },
+  "order": ["hero", "benefits", "packs", "cacao_block", "testimonials", "science", "faq"]
+}

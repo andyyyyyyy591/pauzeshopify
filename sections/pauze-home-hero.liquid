@@ -1,0 +1,243 @@
+<section class="pauze-hero pauze-section--lg" id="hero">
+  <div class="pauze-container">
+    <div class="pauze-hero__inner">
+
+      {{- /* Columna texto */ -}}
+      <div class="pauze-hero__copy">
+        <p class="pauze-eyebrow pauze-hero__eyebrow">{{ section.settings.eyebrow }}</p>
+
+        <h1 class="pauze-h1 pauze-hero__title">
+          {{ section.settings.title }}
+        </h1>
+
+        <p class="pauze-hero__subtitle">{{ section.settings.subtitle }}</p>
+
+        <div class="pauze-hero__ctas">
+          <a href="{{ section.settings.cta_primary_url }}" class="pauze-btn pauze-btn--primary pauze-hero__cta-primary">
+            {{ section.settings.cta_primary_text }}
+          </a>
+          <a href="{{ section.settings.cta_secondary_url }}" class="pauze-btn pauze-btn--secondary">
+            {{ section.settings.cta_secondary_text }}
+          </a>
+        </div>
+
+        {%- if section.settings.show_social_proof -%}
+        <div class="pauze-hero__proof">
+          <div class="pauze-stars" aria-label="5 estrellas">★★★★★</div>
+          <span class="pauze-hero__proof-text">{{ section.settings.social_proof_text }}</span>
+        </div>
+        {%- endif -%}
+      </div>
+
+      {{- /* Columna imagen */ -}}
+      <div class="pauze-hero__media">
+        {%- if section.settings.image != blank -%}
+          {{
+            section.settings.image
+            | image_url: width: 900
+            | image_tag:
+              loading: 'eager',
+              fetchpriority: 'high',
+              width: 900,
+              height: 1125,
+              alt: section.settings.image_alt | default: shop.name,
+              class: 'pauze-hero__img'
+          }}
+        {%- else -%}
+          <div class="pauze-placeholder pauze-hero__placeholder" aria-hidden="true"></div>
+        {%- endif -%}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .pauze-hero {
+    background: var(--pauze-white);
+    overflow: hidden;
+  }
+
+  .pauze-hero__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+    min-height: clamp(480px, 70vh, 720px);
+  }
+
+  .pauze-hero__media {
+    order: -1;
+  }
+
+  .pauze-hero__placeholder,
+  .pauze-hero__img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius-lg);
+    object-fit: cover;
+    display: block;
+  }
+
+  .pauze-hero__eyebrow {
+    margin-bottom: 1rem;
+  }
+
+  .pauze-hero__title {
+    margin-bottom: 1.25rem;
+  }
+
+  .pauze-hero__subtitle {
+    font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
+    color: var(--pauze-gris-dark);
+    line-height: 1.65;
+    margin-bottom: 2rem;
+    max-width: 46ch;
+  }
+
+  .pauze-hero__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .pauze-hero__cta-primary {
+    min-width: 200px;
+  }
+
+  .pauze-hero__proof {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+  }
+
+  .pauze-hero__proof .pauze-stars {
+    font-size: 0.875rem;
+  }
+
+  .pauze-hero__proof-text {
+    font-size: 0.8125rem;
+    color: var(--pauze-gris-dark);
+    font-weight: 500;
+  }
+
+  @media (min-width: 900px) {
+    .pauze-hero__inner {
+      grid-template-columns: 1fr 1fr;
+      min-height: clamp(560px, 80vh, 840px);
+    }
+
+    .pauze-hero__media {
+      order: 1;
+    }
+
+    .pauze-hero__placeholder,
+    .pauze-hero__img {
+      aspect-ratio: 4 / 5;
+      max-height: 680px;
+    }
+
+    .pauze-hero__ctas {
+      flex-wrap: nowrap;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .pauze-hero__inner {
+      grid-template-columns: 55% 45%;
+      gap: clamp(3rem, 5vw, 6rem);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Hero principal",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "PAUZE PM BLEND · 30 NOCHES"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Título (H1)",
+      "default": "<p>Apagá la noche.<br><em>Hacé tu pausa.</em></p>"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtítulo",
+      "default": "Tu postre nocturno con L-teanina, apigenina y magnesio. Sin melatonina, sin azúcar agregada, sin resaca."
+    },
+    {
+      "type": "header",
+      "content": "CTA principal"
+    },
+    {
+      "type": "text",
+      "id": "cta_primary_text",
+      "label": "Texto CTA primario",
+      "default": "COMPRAR · $39.900"
+    },
+    {
+      "type": "url",
+      "id": "cta_primary_url",
+      "label": "Link CTA primario"
+    },
+    {
+      "type": "header",
+      "content": "CTA secundario"
+    },
+    {
+      "type": "text",
+      "id": "cta_secondary_text",
+      "label": "Texto CTA secundario",
+      "default": "Cómo funciona →"
+    },
+    {
+      "type": "url",
+      "id": "cta_secondary_url",
+      "label": "Link CTA secundario"
+    },
+    {
+      "type": "header",
+      "content": "Imagen"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagen hero (lifestyle)"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Alt de imagen"
+    },
+    {
+      "type": "header",
+      "content": "Prueba social"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social_proof",
+      "label": "Mostrar prueba social",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "social_proof_text",
+      "label": "Texto prueba social",
+      "default": "+340 personas ya hacen su pausa · 4.9 ★"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero principal"
+    }
+  ]
+}
+{% endschema %}

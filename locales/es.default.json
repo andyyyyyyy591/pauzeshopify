@@ -1,0 +1,104 @@
+{
+  "general": {
+    "accessibility": {
+      "skip_to_content": "Ir al contenido"
+    },
+    "meta": {
+      "tags": "Etiquetado con",
+      "page": "Página"
+    },
+    "password_page": {
+      "title": "Próximamente"
+    },
+    "search": {
+      "placeholder": "Buscar",
+      "submit": "Buscar",
+      "no_results": "No hay resultados para \"{{ terms }}\""
+    }
+  },
+  "header": {
+    "menu": "Menú",
+    "cart": "Carrito",
+    "search": "Buscar",
+    "account": "Mi cuenta",
+    "close": "Cerrar"
+  },
+  "footer": {
+    "newsletter": {
+      "title": "Sumate al ritual",
+      "placeholder": "Tu email",
+      "submit": "Sumarme →",
+      "success": "¡Bienvenido/a al ritual Pauze!"
+    }
+  },
+  "cart": {
+    "title": "Tu carrito",
+    "empty": "Tu carrito está vacío",
+    "continue_shopping": "Seguir comprando",
+    "checkout": "Finalizar compra",
+    "subtotal": "Subtotal",
+    "remove": "Eliminar",
+    "quantity": "Cantidad"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "AGREGAR AL CARRITO",
+      "sold_out": "Agotado",
+      "unavailable": "No disponible",
+      "quantity": "Cantidad",
+      "sale": "Oferta",
+      "new": "Nuevo",
+      "view_details": "Ver detalles"
+    },
+    "general": {
+      "from_price": "Desde {{ price }}"
+    }
+  },
+  "collections": {
+    "general": {
+      "no_matches": "No hay productos en esta colección.",
+      "items_with_count": {
+        "one": "{{ count }} producto",
+        "other": "{{ count }} productos"
+      }
+    }
+  },
+  "customer": {
+    "login": {
+      "title": "Iniciar sesión",
+      "email": "Email",
+      "password": "Contraseña",
+      "submit": "Ingresar",
+      "forgot_password": "¿Olvidaste tu contraseña?",
+      "no_account": "¿No tenés cuenta? Creá una"
+    },
+    "register": {
+      "title": "Crear cuenta",
+      "first_name": "Nombre",
+      "last_name": "Apellido",
+      "email": "Email",
+      "password": "Contraseña",
+      "submit": "Crear cuenta",
+      "have_account": "¿Ya tenés cuenta? Iniciá sesión"
+    },
+    "account": {
+      "title": "Mi cuenta",
+      "logout": "Cerrar sesión",
+      "orders": "Mis pedidos",
+      "details": "Datos de cuenta"
+    }
+  },
+  "blogs": {
+    "article": {
+      "posted_in": "Publicado en",
+      "written_by": "por",
+      "read_more": "LEER MÁS →",
+      "back_to_blog": "Volver al blog"
+    }
+  },
+  "404": {
+    "title": "Página no encontrada",
+    "subtext": "La página que buscás no existe.",
+    "link": "Volver al inicio"
+  }
+}

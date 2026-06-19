@@ -1,0 +1,137 @@
+{%- if section.settings.show -%}
+<div class="pauze-announcement" role="banner" aria-label="Anuncios">
+  <div class="pauze-announcement__track" aria-hidden="true">
+    {%- assign msg1 = section.settings.message_1 -%}
+    {%- assign msg2 = section.settings.message_2 -%}
+    {%- assign msg3 = section.settings.message_3 -%}
+    {%- assign msg4 = section.settings.message_4 -%}
+    {%- assign msg5 = section.settings.message_5 -%}
+
+    {%- comment %} Duplicamos para loop seamless {%- endcomment %}
+    {%- for i in (1..2) -%}
+      <div class="pauze-announcement__row">
+        {%- if msg1 != blank -%}<span class="pauze-announcement__item">{{ msg1 }}</span><span class="pauze-announcement__sep">·</span>{%- endif -%}
+        {%- if msg2 != blank -%}<span class="pauze-announcement__item">{{ msg2 }}</span><span class="pauze-announcement__sep">·</span>{%- endif -%}
+        {%- if msg3 != blank -%}<span class="pauze-announcement__item">{{ msg3 }}</span><span class="pauze-announcement__sep">·</span>{%- endif -%}
+        {%- if msg4 != blank -%}<span class="pauze-announcement__item">{{ msg4 }}</span><span class="pauze-announcement__sep">·</span>{%- endif -%}
+        {%- if msg5 != blank -%}<span class="pauze-announcement__item">{{ msg5 }}</span><span class="pauze-announcement__sep">·</span>{%- endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+{%- endif -%}
+
+<style>
+  .pauze-announcement {
+    background-color: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+    overflow: hidden;
+    height: 36px;
+    display: flex;
+    align-items: center;
+  }
+
+  .pauze-announcement__track {
+    display: flex;
+    animation: pauze-marquee {{ section.settings.speed }}s linear infinite;
+    white-space: nowrap;
+  }
+
+  .pauze-announcement__track:hover {
+    animation-play-state: paused;
+  }
+
+  .pauze-announcement__row {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    padding-right: 0;
+  }
+
+  .pauze-announcement__item {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    padding: 0 1.5rem;
+  }
+
+  .pauze-announcement__sep {
+    opacity: 0.4;
+    font-size: 0.6rem;
+  }
+
+  @keyframes pauze-marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show",
+      "label": "Mostrar",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Fondo",
+      "default": "#2E1F14"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Texto",
+      "default": "#F6F1E9"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "Velocidad (segundos por vuelta)",
+      "min": 15,
+      "max": 60,
+      "step": 5,
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "Mensajes"
+    },
+    {
+      "type": "text",
+      "id": "message_1",
+      "label": "Mensaje 1",
+      "default": "🎉 10% OFF tu primera compra · CÓDIGO PAUZE10"
+    },
+    {
+      "type": "text",
+      "id": "message_2",
+      "label": "Mensaje 2",
+      "default": "🚚 Envío gratis desde $39.900"
+    },
+    {
+      "type": "text",
+      "id": "message_3",
+      "label": "Mensaje 3",
+      "default": "💳 12 cuotas sin interés con Mercado Pago"
+    },
+    {
+      "type": "text",
+      "id": "message_4",
+      "label": "Mensaje 4",
+      "default": "🛡️ Garantía 14 noches sin devolver el pack"
+    },
+    {
+      "type": "text",
+      "id": "message_5",
+      "label": "Mensaje 5",
+      "default": "🌙 Sin pastillas · Sin azúcar · Sin resaca"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,13 @@
+{
+  "current": {
+    "favicon": "",
+    "color_primary": "#5A3E2B",
+    "color_cta": "#3B7A2C",
+    "color_background": "#FFFFFF",
+    "font_size_base": "16",
+    "cart_type": "drawer",
+    "social_instagram": "https://instagram.com/pauze.ar",
+    "social_tiktok": ""
+  },
+  "presets": {}
+}

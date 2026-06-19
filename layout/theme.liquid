@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#5A3E2B">
+
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; {{ current_tags | join: ', ' }}{% endif -%}
+      {%- if current_page != 1 %} &ndash; Página {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+    {% render 'pauze-fonts' %}
+
+    {{ content_for_header }}
+
+    {{ 'pauze-base.css' | asset_url | stylesheet_tag }}
+    {{ 'pauze-components.css' | asset_url | stylesheet_tag }}
+  </head>
+
+  <body class="template-{{ template.name }}{% if template.suffix %} template-{{ template.name }}-{{ template.suffix }}{% endif %}">
+
+    <a class="skip-link" href="#main-content">Ir al contenido</a>
+
+    {% section 'pauze-announcement-bar' %}
+    {% section 'pauze-header' %}
+
+    <main id="main-content" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    {% section 'pauze-footer' %}
+
+    <script src="{{ 'pauze.js' | asset_url }}" defer></script>
+  </body>
+</html>

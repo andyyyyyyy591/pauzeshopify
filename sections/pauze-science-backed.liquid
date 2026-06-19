@@ -1,0 +1,227 @@
+<section class="pauze-science pauze-section pauze-bg-white" id="la-ciencia">
+  <div class="pauze-container">
+
+    <div class="pauze-section-header">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="pauze-eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      <h2 class="pauze-h2">{{ section.settings.title }}</h2>
+      {%- if section.settings.subtitle != blank -%}
+        <p>{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="pauze-science__grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'paper' -%}
+        <article class="pauze-science__card pauze-card pauze-card--border" {{ block.shopify_attributes }}>
+          <div class="pauze-science__icon" aria-hidden="true">📄</div>
+          <p class="pauze-science__journal">{{ block.settings.journal }}</p>
+          <p class="pauze-science__year">{{ block.settings.year }}</p>
+          <h3 class="pauze-science__title">{{ block.settings.title }}</h3>
+          <p class="pauze-science__finding">{{ block.settings.finding }}</p>
+          {%- if block.settings.link != blank -%}
+            <a
+              href="{{ block.settings.link }}"
+              class="pauze-science__read-more"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+            >Leer el estudio →</a>
+          {%- endif -%}
+        </article>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    <p class="pauze-science__disclaimer">{{ section.settings.disclaimer }}</p>
+
+  </div>
+</section>
+
+<style>
+  .pauze-science__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .pauze-science__card {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .pauze-science__icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .pauze-science__journal {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--pauze-verde-dark);
+    max-width: 100%;
+  }
+
+  .pauze-science__year {
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-style: italic;
+    color: var(--pauze-cacao-light);
+    max-width: 100%;
+  }
+
+  .pauze-science__title {
+    font-family: var(--font-display);
+    font-size: 1.0625rem;
+    font-style: italic;
+    color: var(--pauze-cacao);
+    line-height: 1.25;
+    margin-bottom: 0.25rem;
+  }
+
+  .pauze-science__finding {
+    font-size: 0.875rem;
+    color: var(--pauze-gris-dark);
+    line-height: 1.65;
+    flex: 1;
+    max-width: 100%;
+  }
+
+  .pauze-science__read-more {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--pauze-verde-dark);
+    text-decoration: none;
+    margin-top: 0.5rem;
+    display: inline-block;
+    transition: color var(--transition);
+  }
+
+  .pauze-science__read-more:hover {
+    color: var(--pauze-verde);
+    text-decoration: underline;
+  }
+
+  .pauze-science__disclaimer {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--pauze-gris);
+    max-width: 60ch;
+    margin-inline: auto;
+    line-height: 1.65;
+  }
+
+  @media (min-width: 768px) {
+    .pauze-science__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Avalado por la ciencia",
+  "blocks": [
+    {
+      "type": "paper",
+      "name": "Estudio científico",
+      "settings": [
+        {
+          "type": "text",
+          "id": "journal",
+          "label": "Journal / revista",
+          "default": "Asia Pacific J Clin Nutr"
+        },
+        {
+          "type": "text",
+          "id": "year",
+          "label": "Año",
+          "default": "2008"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título del estudio",
+          "default": "L-teanina y ondas alpha cerebrales"
+        },
+        {
+          "type": "textarea",
+          "id": "finding",
+          "label": "Hallazgo resumido",
+          "default": "La L-teanina (200mg) aumenta significativamente la actividad de ondas alpha — el patrón asociado a la relajación atenta sin sedación."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link al estudio (PubMed)"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Con respaldo científico"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Dosis reales. Estudios reales."
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtítulo",
+      "default": "Los activos de Pauze están respaldados por estudios clínicos publicados en journals revisados por pares."
+    },
+    {
+      "type": "text",
+      "id": "disclaimer",
+      "label": "Disclaimer",
+      "default": "Estos estudios respaldan la eficacia de los activos individualmente. Pauze no es un medicamento ni reemplaza el consejo médico."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Avalado por la ciencia",
+      "blocks": [
+        {
+          "type": "paper",
+          "settings": {
+            "journal": "Asia Pacific J Clin Nutr",
+            "year": "2008",
+            "title": "L-teanina y ondas alpha cerebrales",
+            "finding": "La L-teanina (200mg) aumenta significativamente la actividad de ondas alpha — el patrón asociado a la relajación atenta sin sedación."
+          }
+        },
+        {
+          "type": "paper",
+          "settings": {
+            "journal": "Phytomedicine",
+            "year": "2019",
+            "title": "Apigenina y receptores GABA",
+            "finding": "La apigenina se une a receptores GABA-A en el cerebro, produciendo efectos ansiolíticos suaves similares a la manzanilla concentrada."
+          }
+        },
+        {
+          "type": "paper",
+          "settings": {
+            "journal": "J Res Med Sci",
+            "year": "2012",
+            "title": "Magnesio y sueño en adultos",
+            "finding": "La suplementación con magnesio mejora significativamente la calidad del sueño, reduce el tiempo de latencia y aumenta el sueño profundo."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

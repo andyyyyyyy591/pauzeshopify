@@ -1,0 +1,321 @@
+<section class="pauze-packs pauze-section pauze-bg-off-white" id="packs">
+  <div class="pauze-container">
+
+    <div class="pauze-section-header">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="pauze-eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      <h2 class="pauze-h2">{{ section.settings.title }}</h2>
+      {%- if section.settings.subtitle != blank -%}
+        <p>{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="pauze-packs__grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'pack' -%}
+        <div class="pauze-packs__card{% if block.settings.is_featured %} pauze-packs__card--featured{% endif %}" {{ block.shopify_attributes }}>
+
+          {%- if block.settings.tag != blank -%}
+            <span class="pauze-packs__tag">{{ block.settings.tag }}</span>
+          {%- endif -%}
+
+          <div class="pauze-packs__img-wrap">
+            {%- if block.settings.image != blank -%}
+              {{
+                block.settings.image
+                | image_url: width: 600
+                | image_tag:
+                  loading: 'lazy',
+                  width: 600,
+                  height: 600,
+                  alt: block.settings.title,
+                  class: 'pauze-packs__img'
+              }}
+            {%- else -%}
+              <div class="pauze-placeholder pauze-aspect-1-1 pauze-packs__placeholder" aria-hidden="true"></div>
+            {%- endif -%}
+          </div>
+
+          <div class="pauze-packs__info">
+            <p class="pauze-eyebrow pauze-packs__eyebrow">{{ block.settings.eyebrow }}</p>
+            <h3 class="pauze-h3 pauze-packs__title">{{ block.settings.title }}</h3>
+            <p class="pauze-packs__desc">{{ block.settings.description }}</p>
+
+            <div class="pauze-packs__pricing">
+              {%- if block.settings.compare_price != blank -%}
+                <span class="pauze-packs__compare">{{ block.settings.compare_price }}</span>
+              {%- endif -%}
+              <span class="pauze-packs__price">{{ block.settings.price }}</span>
+            </div>
+
+            {%- if block.settings.save_text != blank -%}
+              <p class="pauze-packs__save">{{ block.settings.save_text }}</p>
+            {%- endif -%}
+
+            <a href="{{ block.settings.url }}" class="pauze-btn pauze-btn--primary pauze-btn--full pauze-packs__cta">
+              {{ block.settings.cta_text | default: 'COMPRAR AHORA' }}
+            </a>
+          </div>
+
+        </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .pauze-packs__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .pauze-packs__card {
+    background: var(--pauze-white);
+    border: 1px solid var(--pauze-arena);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
+    transition: all var(--transition);
+  }
+
+  .pauze-packs__card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(46, 31, 20, 0.12);
+  }
+
+  .pauze-packs__card--featured {
+    border-color: var(--pauze-verde);
+    transform: scale(1.02);
+  }
+
+  .pauze-packs__card--featured:hover {
+    transform: scale(1.02) translateY(-4px);
+    box-shadow: 0 20px 48px rgba(59, 122, 44, 0.18);
+  }
+
+  .pauze-packs__tag {
+    position: absolute;
+    top: 0.875rem;
+    right: 0.875rem;
+    z-index: 2;
+    background: var(--pauze-verde-dark);
+    color: var(--pauze-white);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.625rem;
+    border-radius: var(--radius-full);
+  }
+
+  .pauze-packs__img-wrap {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pauze-packs__img,
+  .pauze-packs__placeholder {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+  }
+
+  .pauze-packs__info {
+    padding: 1.5rem;
+  }
+
+  .pauze-packs__eyebrow {
+    margin-bottom: 0.375rem;
+  }
+
+  .pauze-packs__title {
+    margin-bottom: 0.5rem;
+  }
+
+  .pauze-packs__desc {
+    font-size: 0.875rem;
+    color: var(--pauze-gris-dark);
+    margin-bottom: 1rem;
+    max-width: 100%;
+  }
+
+  .pauze-packs__pricing {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .pauze-packs__compare {
+    font-size: 0.875rem;
+    color: var(--pauze-gris);
+    text-decoration: line-through;
+  }
+
+  .pauze-packs__price {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--pauze-cacao);
+  }
+
+  .pauze-packs__save {
+    font-size: 0.8125rem;
+    color: var(--pauze-verde-dark);
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+  }
+
+  .pauze-packs__cta { margin-top: 1rem; }
+
+  @media (min-width: 640px) {
+    .pauze-packs__grid {
+      grid-template-columns: repeat(3, 1fr);
+      align-items: start;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Encontrá tu pack",
+  "blocks": [
+    {
+      "type": "pack",
+      "name": "Pack",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagen del pack"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow",
+          "default": "1 MES · 30 NOCHES"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título",
+          "default": "Pack Individual"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Descripción",
+          "default": "1 doypack · 30 noches de ritual"
+        },
+        {
+          "type": "text",
+          "id": "compare_price",
+          "label": "Precio tachado (opcional)"
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Precio",
+          "default": "$39.900"
+        },
+        {
+          "type": "text",
+          "id": "save_text",
+          "label": "Texto de ahorro",
+          "info": "Ej: Ahorrás $9.900"
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Tag flotante",
+          "info": "Ej: MÁS ELEGIDO"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_featured",
+          "label": "¿Es el pack destacado?",
+          "default": false
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link del pack"
+        },
+        {
+          "type": "text",
+          "id": "cta_text",
+          "label": "Texto del botón",
+          "default": "COMPRAR AHORA"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow de sección",
+      "default": "Elegí el tuyo"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Encontrá tu pack"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtítulo"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Encontrá tu pack",
+      "blocks": [
+        {
+          "type": "pack",
+          "settings": {
+            "eyebrow": "1 MES · 30 NOCHES",
+            "title": "Pack Individual",
+            "description": "1 doypack · 30 noches de ritual",
+            "price": "$39.900",
+            "cta_text": "COMPRAR AHORA"
+          }
+        },
+        {
+          "type": "pack",
+          "settings": {
+            "eyebrow": "2 MESES · 60 NOCHES",
+            "title": "Pack x2",
+            "description": "2 doypacks · 60 noches · El más elegido",
+            "compare_price": "$79.800",
+            "price": "$69.900",
+            "save_text": "Ahorrás $9.900",
+            "tag": "MÁS ELEGIDO",
+            "is_featured": true,
+            "cta_text": "COMPRAR AHORA"
+          }
+        },
+        {
+          "type": "pack",
+          "settings": {
+            "eyebrow": "3 MESES · 90 NOCHES",
+            "title": "Pack x3",
+            "description": "3 doypacks + Frother eléctrico de regalo",
+            "compare_price": "$119.700",
+            "price": "$99.900",
+            "save_text": "Ahorrás $19.800",
+            "tag": "MEJOR PRECIO",
+            "cta_text": "COMPRAR AHORA"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
