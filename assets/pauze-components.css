@@ -76,14 +76,14 @@
 /* Outline crema (sobre fondo oscuro) */
 .pauze-btn--outline-crema {
   background: transparent;
-  color: var(--pauze-crema);
+  color: var(--pauze-white);
   border-color: rgba(246, 241, 233, 0.5);
 }
 
 .pauze-btn--outline-crema:hover {
   background: var(--pauze-crema);
   color: var(--pauze-cacao-deep);
-  border-color: var(--pauze-crema);
+  border-color: var(--pauze-white);
   transform: translateY(-2px);
 }
 
@@ -186,7 +186,7 @@
 
 .pauze-badge--crema {
   background: rgba(246, 241, 233, 0.15);
-  color: var(--pauze-crema);
+  color: var(--pauze-white);
   border: 1px solid rgba(246, 241, 233, 0.3);
 }
 
@@ -587,11 +587,11 @@
 /* Password page */
 .template-password body, .password-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: var(--space-xl); background: var(--pauze-cacao-deep); }
 .password-page__inner { text-align: center; max-width: 420px; width: 100%; }
-.password-page__logo { font-family: var(--font-display); font-size: 3rem; font-style: italic; font-weight: 700; color: var(--pauze-crema); margin-bottom: var(--space-2xl); }
-.password-page__title { font-family: var(--font-display); font-size: clamp(2rem, 6vw, 3.5rem); font-style: italic; color: var(--pauze-crema); margin-bottom: var(--space-md); }
+.password-page__logo { font-family: var(--font-display); font-size: 3rem; font-style: italic; font-weight: 700; color: var(--pauze-white); margin-bottom: var(--space-2xl); }
+.password-page__title { font-family: var(--font-display); font-size: clamp(2rem, 6vw, 3.5rem); font-style: italic; color: var(--pauze-white); margin-bottom: var(--space-md); }
 .password-page__subtext { color: var(--pauze-cacao-light); margin-bottom: var(--space-2xl); }
 .password-page__form { margin-top: var(--space-md); display: flex; gap: var(--space-sm); }
-.password-page__input { flex: 1; padding: 0.75rem 1rem; border: 1px solid var(--pauze-cacao); background: rgba(255,255,255,0.08); color: var(--pauze-crema); border-radius: var(--radius-sm); }
+.password-page__input { flex: 1; padding: 0.75rem 1rem; border: 1px solid var(--pauze-cacao); background: rgba(255,255,255,0.08); color: var(--pauze-white); border-radius: var(--radius-sm); }
 .password-page__input::placeholder { color: var(--pauze-cacao-light); }
 .password-page__error { font-size: 0.875rem; color: #ff8888; margin-top: 0.5rem; }
 

@@ -199,7 +199,7 @@ p, li {
 
 /* Texto sobre fondo oscuro */
 .pauze-on-dark {
-  color: var(--pauze-crema);
+  color: var(--pauze-white);
 }
 
 .pauze-on-dark h1,
@@ -208,7 +208,7 @@ p, li {
 .pauze-on-dark .pauze-h1,
 .pauze-on-dark .pauze-h2,
 .pauze-on-dark .pauze-h3 {
-  color: var(--pauze-crema);
+  color: var(--pauze-white);
 }
 
 /* 4. LAYOUT

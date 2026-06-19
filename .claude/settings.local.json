@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git remote:*)",
+      "Bash(git push:*)",
+      "WebFetch(domain:shopbeam.com)",
+      "WebFetch(domain:www.moodiblends.com)",
+      "Bash(powershell -Command \":*)"
+    ]
+  }
+}
