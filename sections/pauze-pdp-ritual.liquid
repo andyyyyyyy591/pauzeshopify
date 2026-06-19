@@ -1,0 +1,426 @@
+<section class="pauze-pdp-ritual pauze-section pauze-bg-white" id="como-preparar">
+  <div class="pauze-container">
+    <div class="pauze-pdp-ritual__inner">
+
+      <!-- CONTENT -->
+      <div class="pauze-pdp-ritual__content">
+        <div class="pauze-pdp-ritual__header">
+          {%- if section.settings.eyebrow != blank -%}
+            <p class="pauze-eyebrow">{{ section.settings.eyebrow }}</p>
+          {%- endif -%}
+          <h2 class="pauze-h2 pauze-pdp-ritual__title">{{ section.settings.title }}</h2>
+          {%- if section.settings.subtitle != blank -%}
+            <p class="pauze-pdp-ritual__subtitle">{{ section.settings.subtitle }}</p>
+          {%- endif -%}
+        </div>
+
+        <ol class="pauze-pdp-ritual__steps list-reset" aria-label="Pasos para preparar Pauze">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'step' -%}
+              <li class="pauze-pdp-ritual__step" {{ block.shopify_attributes }}>
+                <div class="pauze-pdp-ritual__step-num" aria-hidden="true">{{ forloop.index }}</div>
+                <div class="pauze-pdp-ritual__step-content">
+                  <p class="pauze-pdp-ritual__step-title">{{ block.settings.title }}</p>
+                  <p class="pauze-pdp-ritual__step-desc">{{ block.settings.description }}</p>
+                  {%- if block.settings.tip != blank -%}
+                    <p class="pauze-pdp-ritual__step-tip">
+                      <svg viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                        <path d="M7 1a6 6 0 1 0 0 12A6 6 0 0 0 7 1z" fill="var(--pauze-verde-pale)"/>
+                        <path d="M7 6v4M7 4.5v.5" stroke="var(--pauze-verde-dark)" stroke-width="1.2" stroke-linecap="round"/>
+                      </svg>
+                      {{ block.settings.tip }}
+                    </p>
+                  {%- endif -%}
+                </div>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ol>
+
+        <!-- VARIATION HOT / COLD -->
+        {%- if section.settings.show_variations -%}
+          <div class="pauze-pdp-ritual__variations">
+            <div class="pauze-pdp-ritual__variation">
+              <span class="pauze-pdp-ritual__variation-icon" aria-hidden="true">🌡️</span>
+              <div>
+                <p class="pauze-pdp-ritual__variation-title">Versión caliente</p>
+                <p class="pauze-pdp-ritual__variation-text">{{ section.settings.hot_text }}</p>
+              </div>
+            </div>
+            <div class="pauze-pdp-ritual__variation">
+              <span class="pauze-pdp-ritual__variation-icon" aria-hidden="true">❄️</span>
+              <div>
+                <p class="pauze-pdp-ritual__variation-title">Versión fría</p>
+                <p class="pauze-pdp-ritual__variation-text">{{ section.settings.cold_text }}</p>
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.cta_text != blank -%}
+          <a href="{{ section.settings.cta_url }}" class="pauze-btn pauze-btn--primary pauze-pdp-ritual__cta">
+            {{ section.settings.cta_text }}
+          </a>
+        {%- endif -%}
+      </div>
+
+      <!-- IMAGE -->
+      <div class="pauze-pdp-ritual__media">
+        {%- if section.settings.image != blank -%}
+          {{
+            section.settings.image
+            | image_url: width: 700
+            | image_tag:
+              loading: 'lazy',
+              width: 700,
+              height: 875,
+              alt: section.settings.image_alt | default: 'Preparación de Pauze',
+              class: 'pauze-pdp-ritual__img'
+          }}
+        {%- else -%}
+          <div class="pauze-placeholder pauze-pdp-ritual__placeholder" aria-hidden="true"></div>
+        {%- endif -%}
+
+        {%- if section.settings.image_caption != blank -%}
+          <p class="pauze-pdp-ritual__img-caption">{{ section.settings.image_caption }}</p>
+        {%- endif -%}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .pauze-pdp-ritual__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2.5rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  /* === MEDIA === */
+  .pauze-pdp-ritual__media {
+    order: -1;
+  }
+
+  .pauze-pdp-ritual__img,
+  .pauze-pdp-ritual__placeholder {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    display: block;
+  }
+
+  .pauze-pdp-ritual__placeholder {
+    background: var(--pauze-cacao);
+  }
+
+  .pauze-pdp-ritual__img-caption {
+    font-size: 0.75rem;
+    color: var(--pauze-gris);
+    text-align: center;
+    margin-top: 0.75rem;
+    max-width: 100%;
+  }
+
+  /* === CONTENT === */
+  .pauze-pdp-ritual__header {
+    margin-bottom: 2rem;
+  }
+
+  .pauze-pdp-ritual__title {
+    margin-bottom: 0.75rem;
+  }
+
+  .pauze-pdp-ritual__subtitle {
+    font-size: 0.9375rem;
+    color: var(--pauze-gris-dark);
+    line-height: 1.65;
+    max-width: 48ch;
+  }
+
+  /* === STEPS === */
+  .pauze-pdp-ritual__steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .pauze-pdp-ritual__steps::before {
+    content: '';
+    position: absolute;
+    left: 19px;
+    top: 40px;
+    bottom: 0;
+    width: 1px;
+    background: var(--pauze-arena);
+  }
+
+  .pauze-pdp-ritual__step {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+
+  .pauze-pdp-ritual__step-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--pauze-verde-dark);
+    color: var(--pauze-white);
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-style: italic;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .pauze-pdp-ritual__step-content {
+    padding-top: 0.5rem;
+    flex: 1;
+  }
+
+  .pauze-pdp-ritual__step-title {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--pauze-off-black);
+    margin-bottom: 0.25rem;
+    max-width: 100%;
+  }
+
+  .pauze-pdp-ritual__step-desc {
+    font-size: 0.9rem;
+    color: var(--pauze-gris-dark);
+    line-height: 1.6;
+    max-width: 48ch;
+  }
+
+  .pauze-pdp-ritual__step-tip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    margin-top: 0.5rem;
+    font-size: 0.8125rem;
+    color: var(--pauze-verde-dark);
+    font-weight: 500;
+    max-width: 100%;
+  }
+
+  .pauze-pdp-ritual__step-tip svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+
+  /* === VARIATIONS HOT / COLD === */
+  .pauze-pdp-ritual__variations {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    padding: 1.25rem;
+    background: var(--pauze-off-white);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--pauze-arena);
+  }
+
+  .pauze-pdp-ritual__variation {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+
+  .pauze-pdp-ritual__variation-icon {
+    font-size: 1.125rem;
+    flex-shrink: 0;
+    line-height: 1.4;
+  }
+
+  .pauze-pdp-ritual__variation-title {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--pauze-off-black);
+    margin-bottom: 0.15rem;
+    max-width: 100%;
+  }
+
+  .pauze-pdp-ritual__variation-text {
+    font-size: 0.8125rem;
+    color: var(--pauze-gris-dark);
+    line-height: 1.5;
+    max-width: 100%;
+  }
+
+  .pauze-pdp-ritual__cta {
+    width: 100%;
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .pauze-pdp-ritual__variations {
+      flex-direction: row;
+      gap: 2rem;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .pauze-pdp-ritual__inner {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .pauze-pdp-ritual__media {
+      order: 1;
+    }
+
+    .pauze-pdp-ritual__cta {
+      width: auto;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "PDP — Cómo preparar",
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Paso",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título del paso",
+          "default": "Calentá la leche"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Descripción",
+          "default": "200ml de la leche que prefieras — vaca, almendra, avena o coco."
+        },
+        {
+          "type": "text",
+          "id": "tip",
+          "label": "Consejo (opcional)",
+          "info": "Dejar vacío para ocultar"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "El ritual"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Título",
+      "default": "<p>Listo en <em>2 minutos.</em></p>"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtítulo",
+      "default": "Un scoop, tu leche preferida y 30 segundos de batido. Eso es todo."
+    },
+    {
+      "type": "header",
+      "content": "Variaciones"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_variations",
+      "label": "Mostrar variaciones caliente / frío",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "hot_text",
+      "label": "Descripción versión caliente",
+      "default": "Calentá la leche, agregá el scoop y batí. Ideal para el ritual de antes de dormir."
+    },
+    {
+      "type": "text",
+      "id": "cold_text",
+      "label": "Descripción versión fría",
+      "default": "Mezclá con leche fría y shakeá bien en una botella. Funciona igual de bien."
+    },
+    {
+      "type": "header",
+      "content": "Imagen"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagen lifestyle (preparación)"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Alt de imagen"
+    },
+    {
+      "type": "text",
+      "id": "image_caption",
+      "label": "Caption de imagen (opcional)"
+    },
+    {
+      "type": "header",
+      "content": "CTA"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Texto CTA",
+      "default": "COMPRAR AHORA"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Link CTA"
+    }
+  ],
+  "presets": [
+    {
+      "name": "PDP Pauze — Cómo preparar",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "title": "Calentá la leche",
+            "description": "200ml de la que prefieras: vaca, almendra, avena o coco. No hace falta que hierva.",
+            "tip": "Si querés frío, usá leche fría y shakea bien."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Agregá un scoop y batí",
+            "description": "1 scoop (10g) directo a la taza. Batí 30 segundos con cuchara, frother o licuadora hasta que quede cremoso.",
+            "tip": ""
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Tomalo 30–45 min antes de dormir",
+            "description": "Sentate, dejá el teléfono y disfrutalo. Ese momento es parte del ritual.",
+            "tip": ""
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

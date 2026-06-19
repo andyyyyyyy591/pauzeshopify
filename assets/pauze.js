@@ -314,7 +314,72 @@
   }
 
   /* ---------------------------------------------------------------------------
-     13. PASSWORD PAGE TOGGLE
+     13. PDP PACK / VARIANT SELECTOR
+  --------------------------------------------------------------------------- */
+  function initPdpPackSelector() {
+    var packBtns = document.querySelectorAll('[data-pauze-pack]');
+    if (!packBtns.length) return;
+
+    var variantInput    = document.querySelector('[data-pauze-variant-id]');
+    var priceCurrentEl  = document.querySelector('[data-pauze-price-current]');
+    var priceCompareEl  = document.querySelector('[data-pauze-price-compare]');
+    var priceSavingsEl  = document.querySelector('[data-pauze-price-savings]');
+    var atcText         = document.querySelector('[data-pauze-atc-text]');
+    var atcBtn          = document.querySelector('[data-pauze-atc-btn]');
+    var stickyPrice     = document.querySelector('[data-pauze-sticky-price]');
+
+    packBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        packBtns.forEach(function (b) {
+          b.classList.remove('is-active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        this.classList.add('is-active');
+        this.setAttribute('aria-pressed', 'true');
+
+        var variantId        = this.dataset.pauzePack;
+        var priceFormatted   = this.dataset.pauzePriceFormatted;
+        var compareFormatted = this.dataset.pauzeCompareFormatted;
+        var compareRaw       = parseInt(this.dataset.pauzeCompare || 0, 10);
+        var priceRaw         = parseInt(this.dataset.pauzePrice || 0, 10);
+        var available        = this.dataset.pauzeAvailable !== 'false';
+        var savings          = parseInt(this.dataset.pauzeSavings || 0, 10);
+
+        if (variantInput)   variantInput.value = variantId;
+
+        if (priceCurrentEl) priceCurrentEl.textContent = priceFormatted;
+
+        if (priceCompareEl) {
+          if (compareRaw > priceRaw) {
+            priceCompareEl.textContent = compareFormatted;
+            priceCompareEl.style.display = '';
+          } else {
+            priceCompareEl.style.display = 'none';
+          }
+        }
+
+        if (priceSavingsEl) {
+          if (savings > 0) {
+            priceSavingsEl.textContent = 'AHORRÁS ' + savings + '%';
+            priceSavingsEl.style.display = '';
+          } else {
+            priceSavingsEl.style.display = 'none';
+          }
+        }
+
+        if (atcBtn)  atcBtn.disabled = !available;
+        if (atcText) {
+          atcText.textContent = available
+            ? 'AGREGAR AL CARRITO \u00a0·\u00a0 ' + priceFormatted
+            : 'AGOTADO';
+        }
+        if (stickyPrice) stickyPrice.textContent = priceFormatted;
+      });
+    });
+  }
+
+  /* ---------------------------------------------------------------------------
+     14. PASSWORD PAGE TOGGLE
   --------------------------------------------------------------------------- */
   function initPasswordPage() {
     const toggle = document.querySelector('[data-password-toggle]');
@@ -342,6 +407,7 @@
     initNewsletterPopup();
     initStickyAtc();
     initPasswordPage();
+    initPdpPackSelector();
     updateCartCount();
   });
 

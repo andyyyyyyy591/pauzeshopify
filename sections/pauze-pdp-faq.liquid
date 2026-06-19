@@ -1,0 +1,240 @@
+<section class="pauze-pdp-faq pauze-section pauze-bg-white" id="faq-producto">
+  <div class="pauze-container">
+
+    <div class="pauze-pdp-faq__inner">
+
+      <!-- HEADER -->
+      <div class="pauze-pdp-faq__header">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="pauze-eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        <h2 class="pauze-h2 pauze-pdp-faq__title">{{ section.settings.title }}</h2>
+
+        {%- if section.settings.show_contact -%}
+          <div class="pauze-pdp-faq__contact">
+            <p class="pauze-pdp-faq__contact-text">{{ section.settings.contact_text }}</p>
+            <a href="mailto:{{ section.settings.contact_email }}" class="pauze-btn pauze-btn--secondary pauze-pdp-faq__contact-btn">
+              {{ section.settings.contact_cta }}
+            </a>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <!-- ACCORDION -->
+      <div class="pauze-accordion pauze-pdp-faq__accordion">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'faq_item' -%}
+            <details class="pauze-accordion__item" {{ block.shopify_attributes }} data-pauze-faq>
+              <summary class="pauze-accordion__trigger">
+                {{ block.settings.question }}
+                <span class="pauze-accordion__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="pauze-accordion__content">
+                {{ block.settings.answer }}
+              </div>
+            </details>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+    </div>
+
+    {%- if section.settings.see_all_text != blank -%}
+      <div class="pauze-pdp-faq__footer">
+        <a href="{{ section.settings.see_all_url }}" class="pauze-pdp-faq__see-all">
+          {{ section.settings.see_all_text }}
+        </a>
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+<style>
+  .pauze-pdp-faq__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    max-width: 860px;
+    margin-inline: auto;
+  }
+
+  .pauze-pdp-faq__title {
+    margin-bottom: 0;
+  }
+
+  .pauze-pdp-faq__contact {
+    margin-top: 1.5rem;
+    padding: 1.25rem;
+    background: var(--pauze-off-white);
+    border: 1px solid var(--pauze-arena);
+    border-radius: var(--radius-lg);
+  }
+
+  .pauze-pdp-faq__contact-text {
+    font-size: 0.875rem;
+    color: var(--pauze-gris-dark);
+    margin-bottom: 0.875rem;
+    max-width: 100%;
+    line-height: 1.55;
+  }
+
+  .pauze-pdp-faq__footer {
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .pauze-pdp-faq__see-all {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--pauze-verde-dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color var(--transition);
+  }
+
+  .pauze-pdp-faq__see-all:hover { color: var(--pauze-verde); }
+
+  details > summary { list-style: none; }
+  details > summary::-webkit-details-marker { display: none; }
+
+  @media (min-width: 860px) {
+    .pauze-pdp-faq__inner {
+      grid-template-columns: 280px 1fr;
+      align-items: start;
+    }
+
+    .pauze-pdp-faq__header {
+      position: sticky;
+      top: calc(var(--header-h) + 2rem);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "PDP — FAQ",
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "Pregunta",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Pregunta",
+          "default": "¿Tiene melatonina?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Respuesta",
+          "default": "<p>No. La melatonina en Argentina se considera medicamento y requiere receta médica. Pauze usa activos botánicos y aminoácidos — L-teanina, apigenina y magnesio glicinato — que acompañan los procesos naturales del cuerpo para entrar al sueño sin efectos secundarios.</p>"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Todo lo que necesitás saber"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Título",
+      "default": "<p>Preguntas <em>frecuentes.</em></p>"
+    },
+    {
+      "type": "header",
+      "content": "Contacto"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_contact",
+      "label": "Mostrar bloque de contacto",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "contact_text",
+      "label": "Texto de contacto",
+      "default": "¿Tenés alguna duda que no está acá? Nuestro equipo responde dentro de las 24hs hábiles."
+    },
+    {
+      "type": "text",
+      "id": "contact_email",
+      "label": "Email de contacto",
+      "default": "contacto@pauze.store"
+    },
+    {
+      "type": "text",
+      "id": "contact_cta",
+      "label": "Texto del botón contacto",
+      "default": "ESCRIBINOS →"
+    },
+    {
+      "type": "text",
+      "id": "see_all_text",
+      "label": "Texto link ver todas",
+      "default": "Ver todas las preguntas frecuentes →"
+    },
+    {
+      "type": "url",
+      "id": "see_all_url",
+      "label": "Link ver todas"
+    }
+  ],
+  "presets": [
+    {
+      "name": "PDP Pauze — FAQ",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Tiene melatonina?",
+            "answer": "<p>No. La melatonina en Argentina se considera medicamento y requiere receta médica. Pauze usa activos botánicos y aminoácidos (L-teanina, apigenina, magnesio glicinato) que acompañan los procesos naturales del cuerpo para entrar al sueño, sin efectos secundarios ni dependencia.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Es seguro tomarlo todos los días?",
+            "answer": "<p>Sí. Los tres activos (L-teanina, apigenina y magnesio glicinato) son seguros para uso diario en adultos sanos. No generan dependencia ni tolerancia. Si tomás medicación o tenés alguna condición de salud, consultá con tu médico antes de incorporarlo.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿En cuánto tiempo noto la diferencia?",
+            "answer": "<p>La mayoría de las personas nota mejoría en la primera semana, sobre todo en qué tan rápido se quedan dormidas. Los efectos más profundos (menos despertares nocturnos, descanso más reparador) suelen verse a partir de las 3 semanas de uso consistente.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Tiene azúcar?",
+            "answer": "<p>No tiene azúcar agregada. El dulzor viene de estevia (Reb A 95%). Por porción tiene menos de 1g de carbohidratos totales y 28 kcal. Es apto para personas que cuidan su ingesta de azúcar.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Cómo funciona la garantía de 14 noches?",
+            "answer": "<p>Si tomás Pauze durante 14 noches seguidas y no notás ninguna diferencia en tu sueño, te devolvemos el monto íntegro como crédito en la tienda (válido por 6 meses). No tenés que devolver el pack. Escribinos a contacto@pauze.store.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Cuánto tarda el envío?",
+            "answer": "<p>Despachamos en 7 a 15 días hábiles desde la confirmación del pago. CABA y GBA suele llegar en 3–7 días hábiles. Para el interior del país puede llegar hasta los 15 días hábiles según la localidad. ANMAT: suplemento dietario, no reemplaza una alimentación variada.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

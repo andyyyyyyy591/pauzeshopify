@@ -1,0 +1,451 @@
+<section class="pauze-pdp-rev pauze-section pauze-bg-off-white" id="resenas">
+  <div class="pauze-container">
+
+    <!-- SUMMARY HEADER -->
+    <div class="pauze-pdp-rev__summary">
+      <div class="pauze-pdp-rev__score-block">
+        <p class="pauze-pdp-rev__score-number">{{ section.settings.rating_score }}</p>
+        <div class="pauze-stars pauze-pdp-rev__score-stars" aria-label="{{ section.settings.rating_score }} de 5 estrellas">★★★★★</div>
+        <p class="pauze-pdp-rev__score-total">{{ section.settings.rating_total }}</p>
+      </div>
+
+      <div class="pauze-pdp-rev__bars">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'rating_bar' -%}
+            <div class="pauze-pdp-rev__bar-row" {{ block.shopify_attributes }}>
+              <span class="pauze-pdp-rev__bar-label">{{ block.settings.stars }}★</span>
+              <div class="pauze-pdp-rev__bar-track" role="progressbar" aria-valuenow="{{ block.settings.percentage }}" aria-valuemin="0" aria-valuemax="100">
+                <div class="pauze-pdp-rev__bar-fill" style="width: {{ block.settings.percentage }}%"></div>
+              </div>
+              <span class="pauze-pdp-rev__bar-pct">{{ block.settings.percentage }}%</span>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <hr class="pauze-divider" style="margin-block: 2.5rem;">
+
+    <!-- SECTION TITLE -->
+    <div class="pauze-section-header" style="margin-bottom: clamp(1.75rem, 3vw, 2.5rem);">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="pauze-eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      <h2 class="pauze-h2">{{ section.settings.title }}</h2>
+    </div>
+
+    <!-- REVIEW CARDS -->
+    <div class="pauze-pdp-rev__grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'review' -%}
+          <article class="pauze-pdp-rev__card" {{ block.shopify_attributes }}>
+            <header class="pauze-pdp-rev__card-header">
+              <div class="pauze-stars pauze-pdp-rev__card-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+              {%- if block.settings.verified -%}
+                <span class="pauze-pdp-rev__verified">
+                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                    <circle cx="5" cy="5" r="5" fill="var(--pauze-verde)"/>
+                    <path d="M2.5 5l2 2 3-3" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  Verificada
+                </span>
+              {%- endif -%}
+            </header>
+
+            <h3 class="pauze-pdp-rev__card-title">{{ block.settings.title }}</h3>
+            <p class="pauze-pdp-rev__card-body">{{ block.settings.body }}</p>
+
+            <footer class="pauze-pdp-rev__card-footer">
+              <div class="pauze-pdp-rev__avatar" aria-hidden="true">
+                {{ block.settings.author | slice: 0 }}
+              </div>
+              <div class="pauze-pdp-rev__author-info">
+                <p class="pauze-pdp-rev__author-name">{{ block.settings.author }}</p>
+                {%- if block.settings.location != blank -%}
+                  <p class="pauze-pdp-rev__author-location">{{ block.settings.location }}</p>
+                {%- endif -%}
+              </div>
+            </footer>
+          </article>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.cta_text != blank -%}
+      <div class="pauze-pdp-rev__footer">
+        <a href="{{ section.settings.cta_url }}" class="pauze-btn pauze-btn--secondary">
+          {{ section.settings.cta_text }}
+        </a>
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+<style>
+  /* === SUMMARY === */
+  .pauze-pdp-rev__summary {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    align-items: flex-start;
+  }
+
+  .pauze-pdp-rev__score-block {
+    text-align: center;
+    min-width: 120px;
+  }
+
+  .pauze-pdp-rev__score-number {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--pauze-cacao);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .pauze-pdp-rev__score-stars {
+    font-size: 1.125rem;
+    margin-bottom: 0.375rem;
+  }
+
+  .pauze-pdp-rev__score-total {
+    font-size: 0.8125rem;
+    color: var(--pauze-gris-dark);
+    font-weight: 500;
+    max-width: 100%;
+  }
+
+  .pauze-pdp-rev__bars {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .pauze-pdp-rev__bar-row {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+  }
+
+  .pauze-pdp-rev__bar-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--pauze-off-black);
+    width: 24px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .pauze-pdp-rev__bar-track {
+    flex: 1;
+    height: 6px;
+    background: var(--pauze-arena);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+  }
+
+  .pauze-pdp-rev__bar-fill {
+    height: 100%;
+    background: var(--pauze-dorado);
+    border-radius: var(--radius-full);
+    transition: width 0.6s var(--ease);
+  }
+
+  .pauze-pdp-rev__bar-pct {
+    font-size: 0.75rem;
+    color: var(--pauze-gris);
+    width: 36px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  /* === CARDS GRID === */
+  .pauze-pdp-rev__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .pauze-pdp-rev__card {
+    background: var(--pauze-white);
+    border: 1px solid var(--pauze-arena);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    transition: box-shadow var(--transition);
+  }
+
+  .pauze-pdp-rev__card:hover {
+    box-shadow: 0 8px 24px rgba(46,31,20,0.08);
+  }
+
+  .pauze-pdp-rev__card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .pauze-pdp-rev__card-stars {
+    font-size: 0.875rem;
+  }
+
+  .pauze-pdp-rev__verified {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--pauze-verde-dark);
+  }
+
+  .pauze-pdp-rev__card-title {
+    font-family: var(--font-display);
+    font-size: 1.0625rem;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--pauze-cacao);
+    line-height: 1.2;
+  }
+
+  .pauze-pdp-rev__card-body {
+    font-size: 0.9rem;
+    color: var(--pauze-gris-dark);
+    line-height: 1.65;
+    flex: 1;
+    max-width: 100%;
+  }
+
+  .pauze-pdp-rev__card-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    margin-top: 0.25rem;
+    padding-top: 0.875rem;
+    border-top: 1px solid var(--pauze-arena);
+  }
+
+  .pauze-pdp-rev__avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--pauze-verde-pale);
+    color: var(--pauze-verde-dark);
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    border: 2px solid var(--pauze-white);
+  }
+
+  .pauze-pdp-rev__author-name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--pauze-off-black);
+    max-width: 100%;
+  }
+
+  .pauze-pdp-rev__author-location {
+    font-size: 0.75rem;
+    color: var(--pauze-gris);
+    max-width: 100%;
+  }
+
+  .pauze-pdp-rev__footer {
+    margin-top: 2.5rem;
+    text-align: center;
+  }
+
+  @media (min-width: 640px) {
+    .pauze-pdp-rev__summary {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .pauze-pdp-rev__score-block {
+      border-right: 1px solid var(--pauze-arena);
+      padding-right: 2rem;
+    }
+
+    .pauze-pdp-rev__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .pauze-pdp-rev__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "PDP — Reseñas",
+  "blocks": [
+    {
+      "type": "rating_bar",
+      "name": "Barra de rating",
+      "settings": [
+        {
+          "type": "number",
+          "id": "stars",
+          "label": "Cantidad de estrellas",
+          "default": 5
+        },
+        {
+          "type": "number",
+          "id": "percentage",
+          "label": "Porcentaje (0–100)",
+          "default": 90
+        }
+      ]
+    },
+    {
+      "type": "review",
+      "name": "Reseña",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título de la reseña",
+          "default": "Por fin dormí de corrido"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Texto de la reseña",
+          "default": "Hacía meses que me despertaba a las 3am. A la semana de tomar Pauze empecé a dormir de corrido."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Nombre del autor",
+          "default": "Martín G."
+        },
+        {
+          "type": "text",
+          "id": "location",
+          "label": "Ubicación (opcional)",
+          "default": "Buenos Aires"
+        },
+        {
+          "type": "checkbox",
+          "id": "verified",
+          "label": "¿Compra verificada?",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "rating_score",
+      "label": "Score general (ej: 4.9)",
+      "default": "4.9"
+    },
+    {
+      "type": "text",
+      "id": "rating_total",
+      "label": "Total de reseñas",
+      "default": "+340 reseñas verificadas"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Lo que dicen quienes ya hicieron su pausa"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Título sección",
+      "default": "<p>Más de 340 personas <em>duermen mejor.</em></p>"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Texto CTA (ver todas)",
+      "default": "Ver todas las reseñas"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Link CTA"
+    }
+  ],
+  "presets": [
+    {
+      "name": "PDP Pauze — Reseñas",
+      "blocks": [
+        { "type": "rating_bar", "settings": { "stars": 5, "percentage": 91 } },
+        { "type": "rating_bar", "settings": { "stars": 4, "percentage": 6 } },
+        { "type": "rating_bar", "settings": { "stars": 3, "percentage": 2 } },
+        { "type": "rating_bar", "settings": { "stars": 2, "percentage": 1 } },
+        { "type": "rating_bar", "settings": { "stars": 1, "percentage": 0 } },
+        {
+          "type": "review",
+          "settings": {
+            "title": "Por fin dejé el alfajor de las 11",
+            "body": "Hace dos meses lo tomo todas las noches. Cambié el alfajor de las 11 por algo que me hace bien. Además duermo mucho mejor desde la primera semana.",
+            "author": "Martín G.", "location": "Buenos Aires", "verified": true
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "title": "Sin resaca al despertar",
+            "body": "Probé melatonina por meses y siempre me levantaba dopado. Pauze no me deja esa sensación rara. Me despierto con energía real.",
+            "author": "Mariana V.", "location": "Córdoba", "verified": true
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "title": "Mi cabeza por fin se apaga",
+            "body": "Trabajo en turnos rotativos. A los 4 días me dormí sin darme cuenta. Hace 3 semanas que duermo así, sin importar el turno.",
+            "author": "Nicolás R.", "location": "Rosario", "verified": true
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "title": "Un ritual que quiero repetir",
+            "body": "Más allá del efecto, el ritual mismo me cambió la noche. Antes con el celu hasta las 2am. Ahora a las 11 ya me estoy durmiendo.",
+            "author": "Camila P.", "location": "CABA", "verified": true
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "title": "Lo recomendó mi nutricionista",
+            "body": "Me indicaba magnesio glicinato y L-teanina por separado. Cuando le mostré Pauze me dijo que tenía las dosis correctas. Muy buena formulación.",
+            "author": "Julián A.", "location": "Mendoza", "verified": true
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "title": "Compré escéptico, voy por el tercero",
+            "body": "Compré por la garantía de 14 noches. No tuve que devolver nada. Voy por mi tercer pack y se lo recomendé a dos amigos que también lo usan.",
+            "author": "Bruno T.", "location": "Tucumán", "verified": true
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
