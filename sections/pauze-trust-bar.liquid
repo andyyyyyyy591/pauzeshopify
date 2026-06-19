@@ -1,0 +1,163 @@
+<section class="pauze-trust" aria-label="Por qué elegir Pauze">
+  <div class="pauze-trust__inner">
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'item' -%}
+      <div class="pauze-trust__item" {{ block.shopify_attributes }}>
+        <div class="pauze-trust__icon" aria-hidden="true">
+          {%- case block.settings.icon -%}
+            {%- when 'shield' -%}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            {%- when 'leaf' -%}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 20A7 7 0 0 1 4 13c0-3.9 3.1-7 7-7h9v9a7 7 0 0 1-9 5z"/>
+                <path d="M2 21c0-3 1.85-5.36 5-6 1.5-.27 3-.27 4 0"/>
+              </svg>
+            {%- when 'star' -%}
+              <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            {%- when 'truck' -%}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="3" width="15" height="13" rx="1"/>
+                <path d="M16 8h4l3 3v5h-7V8z"/>
+                <circle cx="5.5" cy="18.5" r="2.5"/>
+                <circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+            {%- when 'flag' -%}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                <line x1="4" y1="22" x2="4" y2="15"/>
+              </svg>
+            {%- when 'moon' -%}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+              </svg>
+            {%- else -%}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+          {%- endcase -%}
+        </div>
+        <p class="pauze-trust__text">{{ block.settings.text }}</p>
+      </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</section>
+
+<style>
+  .pauze-trust {
+    background: var(--pauze-white);
+    border-top: 1px solid var(--pauze-arena);
+    border-bottom: 1px solid var(--pauze-arena);
+  }
+
+  .pauze-trust__inner {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--container-pad);
+    padding-block: 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem 2rem;
+  }
+
+  .pauze-trust__item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .pauze-trust__icon {
+    width: 18px;
+    height: 18px;
+    color: var(--pauze-verde);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pauze-trust__icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .pauze-trust__text {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--pauze-off-black);
+    max-width: 100%;
+    white-space: nowrap;
+  }
+
+  @media (min-width: 900px) {
+    .pauze-trust__inner {
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      padding-block: 1.125rem;
+    }
+
+    .pauze-trust__item {
+      flex: 1;
+      justify-content: center;
+    }
+
+    .pauze-trust__item + .pauze-trust__item {
+      border-left: 1px solid var(--pauze-arena);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Barra de confianza",
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Ícono",
+          "options": [
+            { "value": "shield", "label": "Escudo (garantía)" },
+            { "value": "leaf", "label": "Hoja (natural)" },
+            { "value": "star", "label": "Estrella (rating)" },
+            { "value": "truck", "label": "Camión (envío)" },
+            { "value": "flag", "label": "Bandera (Argentina)" },
+            { "value": "moon", "label": "Luna (sueño)" },
+            { "value": "check", "label": "Check (genérico)" }
+          ],
+          "default": "check"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texto",
+          "default": "Garantía 14 noches"
+        }
+      ]
+    }
+  ],
+  "settings": [],
+  "presets": [
+    {
+      "name": "Barra de confianza",
+      "blocks": [
+        { "type": "item", "settings": { "icon": "star", "text": "4.9★ · +340 reseñas verificadas" } },
+        { "type": "item", "settings": { "icon": "shield", "text": "Garantía 14 noches sin devolver" } },
+        { "type": "item", "settings": { "icon": "leaf", "text": "Sin melatonina · Activos naturales" } },
+        { "type": "item", "settings": { "icon": "truck", "text": "Envío a todo el país" } },
+        { "type": "item", "settings": { "icon": "flag", "text": "Hecho en Argentina" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

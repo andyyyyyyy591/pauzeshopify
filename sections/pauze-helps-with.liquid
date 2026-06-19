@@ -6,15 +6,72 @@
         <p class="pauze-eyebrow">{{ section.settings.eyebrow }}</p>
       {%- endif -%}
       <h2 class="pauze-h2">{{ section.settings.title }}</h2>
+      {%- if section.settings.subtitle != blank -%}
+        <p class="pauze-helps__section-sub">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
     </div>
 
     <div class="pauze-helps__grid">
       {%- for block in section.blocks -%}
         <div class="pauze-helps__item" {{ block.shopify_attributes }}>
           <div class="pauze-helps__icon-wrap" aria-hidden="true">
-            <span class="pauze-helps__emoji">{{ block.settings.emoji }}</span>
+            {%- case block.settings.icon -%}
+              {%- when 'moon' -%}
+                <svg class="pauze-helps__svg" viewBox="0 0 48 48" fill="none">
+                  <circle cx="24" cy="24" r="24" fill="var(--pauze-verde-pale)"/>
+                  <path d="M30 24c0 6.627-5.373 12-12 12a12 12 0 0 1-2-.167C17.897 37.576 20.793 39 24 39c6.627 0 12-5.373 12-12 0-5.547-3.764-10.22-8.875-11.588A11.972 11.972 0 0 1 30 24z" fill="var(--pauze-verde-dark)"/>
+                  <circle cx="24" cy="18" r="2" fill="var(--pauze-verde)" opacity="0.5"/>
+                  <circle cx="29" cy="22" r="1.5" fill="var(--pauze-verde)" opacity="0.3"/>
+                </svg>
+              {%- when 'brain' -%}
+                <svg class="pauze-helps__svg" viewBox="0 0 48 48" fill="none">
+                  <circle cx="24" cy="24" r="24" fill="var(--pauze-verde-pale)"/>
+                  <path d="M24 14c-2 0-3.8.9-5 2.3A5.5 5.5 0 0 0 14 22c0 1 .27 2 .75 2.82C14.28 25.8 14 26.87 14 28a6 6 0 0 0 6 6h1v-6h-2l3-4 3 4h-2v6h1a6 6 0 0 0 6-6c0-1.13-.28-2.2-.75-3.18.48-.82.75-1.78.75-2.82a5.5 5.5 0 0 0-5-5.47C24.75 15.26 23 14 24 14z" fill="none" stroke="var(--pauze-verde-dark)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M21 22q2-2 6 0" stroke="var(--pauze-verde)" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              {%- when 'cup' -%}
+                <svg class="pauze-helps__svg" viewBox="0 0 48 48" fill="none">
+                  <circle cx="24" cy="24" r="24" fill="var(--pauze-verde-pale)"/>
+                  <!-- steam -->
+                  <path d="M20 16q1-2 0-4" stroke="var(--pauze-verde)" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M24 15q1-2 0-4" stroke="var(--pauze-verde-dark)" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M28 16q1-2 0-4" stroke="var(--pauze-verde)" stroke-width="1.5" stroke-linecap="round"/>
+                  <!-- cup body -->
+                  <path d="M15 20h18l-2 14H17L15 20z" fill="var(--pauze-verde-dark)" opacity="0.15"/>
+                  <path d="M15 20h18l-2 14H17L15 20z" stroke="var(--pauze-verde-dark)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <!-- handle -->
+                  <path d="M33 23h2a3 3 0 0 1 0 6h-2" stroke="var(--pauze-verde-dark)" stroke-width="1.5" stroke-linecap="round"/>
+                  <!-- liquid surface -->
+                  <path d="M17 25q3.5 2 7 0t7 0" stroke="var(--pauze-verde)" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
+              {%- when 'sun' -%}
+                <svg class="pauze-helps__svg" viewBox="0 0 48 48" fill="none">
+                  <circle cx="24" cy="24" r="24" fill="var(--pauze-verde-pale)"/>
+                  <circle cx="24" cy="24" r="6" fill="var(--pauze-verde-dark)" opacity="0.2"/>
+                  <circle cx="24" cy="24" r="4" fill="none" stroke="var(--pauze-verde-dark)" stroke-width="1.5"/>
+                  <!-- rays -->
+                  <line x1="24" y1="13" x2="24" y2="10" stroke="var(--pauze-verde-dark)" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="24" y1="38" x2="24" y2="35" stroke="var(--pauze-verde-dark)" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="13" y1="24" x2="10" y2="24" stroke="var(--pauze-verde-dark)" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="38" y1="24" x2="35" y2="24" stroke="var(--pauze-verde-dark)" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="16.2" y1="16.2" x2="14.1" y2="14.1" stroke="var(--pauze-verde)" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="33.9" y1="33.9" x2="31.8" y2="31.8" stroke="var(--pauze-verde)" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="31.8" y1="16.2" x2="33.9" y2="14.1" stroke="var(--pauze-verde)" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="14.1" y1="33.9" x2="16.2" y2="31.8" stroke="var(--pauze-verde)" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              {%- when 'heart' -%}
+                <svg class="pauze-helps__svg" viewBox="0 0 48 48" fill="none">
+                  <circle cx="24" cy="24" r="24" fill="var(--pauze-verde-pale)"/>
+                  <path d="M24 33s-10-6.5-10-13a6 6 0 0 1 10-4.47A6 6 0 0 1 34 20c0 6.5-10 13-10 13z" fill="var(--pauze-verde-dark)" opacity="0.2" stroke="var(--pauze-verde-dark)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              {%- else -%}
+                <svg class="pauze-helps__svg" viewBox="0 0 48 48" fill="none">
+                  <circle cx="24" cy="24" r="24" fill="var(--pauze-verde-pale)"/>
+                  <path d="M14 24l7 7 13-13" stroke="var(--pauze-verde-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            {%- endcase -%}
           </div>
-          <p class="pauze-helps__label">{{ block.settings.label }}</p>
+          <h3 class="pauze-helps__label">{{ block.settings.label }}</h3>
           <p class="pauze-helps__desc">{{ block.settings.description }}</p>
         </div>
       {%- endfor -%}
@@ -32,45 +89,40 @@
 </section>
 
 <style>
+  .pauze-helps__section-sub {
+    margin-top: 0.75rem;
+    font-size: 1rem;
+    color: var(--pauze-gris-dark);
+    max-width: 52ch;
+    margin-inline: auto;
+  }
+
   .pauze-helps__grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem 1.25rem;
-    margin-bottom: 2.5rem;
+    gap: 2rem 1.5rem;
+    margin-bottom: 3rem;
   }
 
   .pauze-helps__item {
     text-align: center;
-    padding: 1.5rem 1rem;
-    border-radius: var(--radius-lg);
-    border: 1px solid transparent;
-    transition: all var(--transition);
-  }
-
-  .pauze-helps__item:hover {
-    background: var(--pauze-off-white);
-    border-color: var(--pauze-arena);
   }
 
   .pauze-helps__icon-wrap {
-    width: 72px;
-    height: 72px;
-    margin: 0 auto 1rem;
-    background: var(--pauze-crema);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.25rem;
     transition: transform var(--transition);
   }
 
   .pauze-helps__item:hover .pauze-helps__icon-wrap {
-    transform: scale(1.08);
+    transform: translateY(-4px);
   }
 
-  .pauze-helps__emoji {
-    font-size: 2rem;
-    line-height: 1;
+  .pauze-helps__svg {
+    width: 100%;
+    height: 100%;
+    display: block;
   }
 
   .pauze-helps__label {
@@ -80,15 +132,16 @@
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--pauze-cacao);
-    margin-bottom: 0.375rem;
-    max-width: 100%;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
   }
 
   .pauze-helps__desc {
     font-size: 0.875rem;
     color: var(--pauze-gris-dark);
-    line-height: 1.5;
-    max-width: 100%;
+    line-height: 1.55;
+    max-width: 24ch;
+    margin-inline: auto;
   }
 
   .pauze-helps__cta {
@@ -98,15 +151,18 @@
   @media (min-width: 640px) {
     .pauze-helps__grid {
       grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem 2rem;
+      gap: 2rem 2.5rem;
     }
 
     .pauze-helps__icon-wrap {
       width: 96px;
       height: 96px;
+      margin-bottom: 1.5rem;
     }
 
-    .pauze-helps__emoji { font-size: 2.5rem; }
+    .pauze-helps__desc {
+      max-width: 100%;
+    }
   }
 </style>
 
@@ -119,10 +175,18 @@
       "name": "Beneficio",
       "settings": [
         {
-          "type": "text",
-          "id": "emoji",
-          "label": "Emoji / ícono",
-          "default": "🌙"
+          "type": "select",
+          "id": "icon",
+          "label": "Ícono",
+          "options": [
+            { "value": "moon", "label": "Luna" },
+            { "value": "brain", "label": "Mente / ondas" },
+            { "value": "cup", "label": "Taza / ritual" },
+            { "value": "sun", "label": "Sol / mañana" },
+            { "value": "heart", "label": "Corazón" },
+            { "value": "check", "label": "Check genérico" }
+          ],
+          "default": "moon"
         },
         {
           "type": "text",
@@ -154,6 +218,11 @@
     },
     {
       "type": "text",
+      "id": "subtitle",
+      "label": "Subtítulo (opcional)"
+    },
+    {
+      "type": "text",
       "id": "cta_text",
       "label": "Texto CTA",
       "default": "COMPRAR AHORA"
@@ -171,7 +240,7 @@
         {
           "type": "benefit",
           "settings": {
-            "emoji": "🌙",
+            "icon": "moon",
             "label": "DORMIR MEJOR",
             "description": "Activos clínicos que acompañan al sueño"
           }
@@ -179,7 +248,7 @@
         {
           "type": "benefit",
           "settings": {
-            "emoji": "🧠",
+            "icon": "brain",
             "label": "BAJAR LA MENTE",
             "description": "L-teanina + apigenina para apagar la cabeza"
           }
@@ -187,7 +256,7 @@
         {
           "type": "benefit",
           "settings": {
-            "emoji": "🍫",
+            "icon": "cup",
             "label": "POSTRE NOCTURNO",
             "description": "Sin culpa, sin azúcar agregada"
           }
@@ -195,7 +264,7 @@
         {
           "type": "benefit",
           "settings": {
-            "emoji": "🌅",
+            "icon": "sun",
             "label": "SIN RESACA",
             "description": "Te despertás claro/a, no embotado/a"
           }
