@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -52,15 +61,63 @@
             "study": "J Res Med Sci, 2012"
           }
         },
-        "fr1": { "type": "formula_row", "settings": { "ingredient": "L-teanina", "amount": "200mg", "is_active": true } },
-        "fr2": { "type": "formula_row", "settings": { "ingredient": "Apigenina", "amount": "50mg", "is_active": true } },
-        "fr3": { "type": "formula_row", "settings": { "ingredient": "Magnesio glicinato", "amount": "300mg", "is_active": true } },
-        "fr4": { "type": "formula_row", "settings": { "ingredient": "Cacao en polvo desgrasado", "amount": "5.2g", "is_active": false } },
-        "fr5": { "type": "formula_row", "settings": { "ingredient": "Canela ceilán", "amount": "300mg", "is_active": false } },
-        "fr6": { "type": "formula_row", "settings": { "ingredient": "Estevia (Reb A 95%)", "amount": "80mg", "is_active": false } },
-        "fr7": { "type": "formula_row", "settings": { "ingredient": "Maltodextrina (portador)", "amount": "3.1g", "is_active": false } }
+        "fr1": {
+          "type": "formula_row",
+          "settings": {
+            "ingredient": "L-teanina",
+            "amount": "200mg",
+            "is_active": true
+          }
+        },
+        "fr2": {
+          "type": "formula_row",
+          "settings": {
+            "ingredient": "Apigenina",
+            "amount": "50mg",
+            "is_active": true
+          }
+        },
+        "fr3": {
+          "type": "formula_row",
+          "settings": {
+            "ingredient": "Magnesio glicinato",
+            "amount": "300mg",
+            "is_active": true
+          }
+        },
+        "fr4": {
+          "type": "formula_row",
+          "settings": {
+            "ingredient": "Cacao en polvo desgrasado",
+            "amount": "5.2g",
+            "is_active": false
+          }
+        },
+        "fr5": {
+          "type": "formula_row",
+          "settings": {
+            "ingredient": "Canela ceilán",
+            "amount": "300mg",
+            "is_active": false
+          }
+        },
+        "fr6": {
+          "type": "formula_row",
+          "settings": {
+            "ingredient": "Estevia (Reb A 95%)",
+            "amount": "80mg",
+            "is_active": false
+          }
+        },
+        "fr7": {
+          "type": "formula_row",
+          "settings": {
+            "ingredient": "Maltodextrina (portador)",
+            "amount": "3.1g",
+            "is_active": false
+          }
+        }
       },
-      "blocks_order": ["ing1", "ing2", "ing3", "fr1", "fr2", "fr3", "fr4", "fr5", "fr6", "fr7"],
       "settings": {
         "eyebrow": "Fórmula PM",
         "title": "<p>Cada activo, <em>en la dosis que funciona.</em></p>",
@@ -99,7 +156,6 @@
           }
         }
       },
-      "blocks_order": ["s1", "s2", "s3"],
       "settings": {
         "eyebrow": "El ritual",
         "title": "<p>Listo en <em>2 minutos.</em></p>",
@@ -113,19 +169,102 @@
     "reviews": {
       "type": "pauze-pdp-reviews",
       "blocks": {
-        "rb5": { "type": "rating_bar", "settings": { "stars": 5, "percentage": 91 } },
-        "rb4": { "type": "rating_bar", "settings": { "stars": 4, "percentage": 6 } },
-        "rb3": { "type": "rating_bar", "settings": { "stars": 3, "percentage": 2 } },
-        "rb2": { "type": "rating_bar", "settings": { "stars": 2, "percentage": 1 } },
-        "rb1": { "type": "rating_bar", "settings": { "stars": 1, "percentage": 0 } },
-        "r1": { "type": "review", "settings": { "title": "Por fin dejé el alfajor de las 11", "body": "Hace dos meses lo tomo todas las noches. Cambié el alfajor de las 11 por algo que me hace bien. Además duermo mucho mejor desde la primera semana.", "author": "Martín G.", "location": "Buenos Aires", "verified": true } },
-        "r2": { "type": "review", "settings": { "title": "Sin resaca al despertar", "body": "Probé melatonina por meses y siempre me levantaba dopado. Pauze no me deja esa sensación rara. Me despierto con energía real.", "author": "Mariana V.", "location": "Córdoba", "verified": true } },
-        "r3": { "type": "review", "settings": { "title": "Mi cabeza por fin se apaga", "body": "Trabajo en turnos rotativos. A los 4 días me dormí sin darme cuenta. Hace 3 semanas que duermo así, sin importar el turno.", "author": "Nicolás R.", "location": "Rosario", "verified": true } },
-        "r4": { "type": "review", "settings": { "title": "Un ritual que quiero repetir", "body": "Más allá del efecto, el ritual mismo me cambió la noche. Antes con el celu hasta las 2am. Ahora a las 11 ya me estoy durmiendo.", "author": "Camila P.", "location": "CABA", "verified": true } },
-        "r5": { "type": "review", "settings": { "title": "Lo recomendó mi nutricionista", "body": "Me indicaba magnesio glicinato y L-teanina por separado. Cuando le mostré Pauze me dijo que tenía las dosis correctas. Muy buena formulación.", "author": "Julián A.", "location": "Mendoza", "verified": true } },
-        "r6": { "type": "review", "settings": { "title": "Compré escéptico, voy por el tercero", "body": "Compré por la garantía de 14 noches. No tuve que devolver nada. Voy por mi tercer pack y se lo recomendé a dos amigos que también lo usan.", "author": "Bruno T.", "location": "Tucumán", "verified": true } }
+        "rb5": {
+          "type": "rating_bar",
+          "settings": {
+            "stars": 5,
+            "percentage": 91
+          }
+        },
+        "rb4": {
+          "type": "rating_bar",
+          "settings": {
+            "stars": 4,
+            "percentage": 6
+          }
+        },
+        "rb3": {
+          "type": "rating_bar",
+          "settings": {
+            "stars": 3,
+            "percentage": 2
+          }
+        },
+        "rb2": {
+          "type": "rating_bar",
+          "settings": {
+            "stars": 2,
+            "percentage": 1
+          }
+        },
+        "rb1": {
+          "type": "rating_bar",
+          "settings": {
+            "stars": 1,
+            "percentage": 0
+          }
+        },
+        "r1": {
+          "type": "review",
+          "settings": {
+            "title": "Por fin dejé el alfajor de las 11",
+            "body": "Hace dos meses lo tomo todas las noches. Cambié el alfajor de las 11 por algo que me hace bien. Además duermo mucho mejor desde la primera semana.",
+            "author": "Martín G.",
+            "location": "Buenos Aires",
+            "verified": true
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "title": "Sin resaca al despertar",
+            "body": "Probé melatonina por meses y siempre me levantaba dopado. Pauze no me deja esa sensación rara. Me despierto con energía real.",
+            "author": "Mariana V.",
+            "location": "Córdoba",
+            "verified": true
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "title": "Mi cabeza por fin se apaga",
+            "body": "Trabajo en turnos rotativos. A los 4 días me dormí sin darme cuenta. Hace 3 semanas que duermo así, sin importar el turno.",
+            "author": "Nicolás R.",
+            "location": "Rosario",
+            "verified": true
+          }
+        },
+        "r4": {
+          "type": "review",
+          "settings": {
+            "title": "Un ritual que quiero repetir",
+            "body": "Más allá del efecto, el ritual mismo me cambió la noche. Antes con el celu hasta las 2am. Ahora a las 11 ya me estoy durmiendo.",
+            "author": "Camila P.",
+            "location": "CABA",
+            "verified": true
+          }
+        },
+        "r5": {
+          "type": "review",
+          "settings": {
+            "title": "Lo recomendó mi nutricionista",
+            "body": "Me indicaba magnesio glicinato y L-teanina por separado. Cuando le mostré Pauze me dijo que tenía las dosis correctas. Muy buena formulación.",
+            "author": "Julián A.",
+            "location": "Mendoza",
+            "verified": true
+          }
+        },
+        "r6": {
+          "type": "review",
+          "settings": {
+            "title": "Compré escéptico, voy por el tercero",
+            "body": "Compré por la garantía de 14 noches. No tuve que devolver nada. Voy por mi tercer pack y se lo recomendé a dos amigos que también lo usan.",
+            "author": "Bruno T.",
+            "location": "Tucumán",
+            "verified": true
+          }
+        }
       },
-      "blocks_order": ["rb5", "rb4", "rb3", "rb2", "rb1", "r1", "r2", "r3", "r4", "r5", "r6"],
       "settings": {
         "rating_score": "4.9",
         "rating_total": "+340 reseñas verificadas",
@@ -137,14 +276,49 @@
     "faq": {
       "type": "pauze-pdp-faq",
       "blocks": {
-        "q1": { "type": "faq_item", "settings": { "question": "¿Tiene melatonina?", "answer": "<p>No. La melatonina en Argentina se considera medicamento y requiere receta médica. Pauze usa activos botánicos y aminoácidos (L-teanina, apigenina, magnesio glicinato) que acompañan los procesos naturales del cuerpo para entrar al sueño, sin efectos secundarios ni dependencia.</p>" } },
-        "q2": { "type": "faq_item", "settings": { "question": "¿Es seguro tomarlo todos los días?", "answer": "<p>Sí. Los tres activos son seguros para uso diario en adultos sanos. No generan dependencia ni tolerancia. Si tomás medicación o tenés alguna condición de salud, consultá con tu médico antes.</p>" } },
-        "q3": { "type": "faq_item", "settings": { "question": "¿En cuánto tiempo noto la diferencia?", "answer": "<p>La mayoría nota mejoría en la primera semana, especialmente en qué tan rápido se quedan dormidas. Los efectos más profundos suelen verse a partir de las 3 semanas de uso consistente.</p>" } },
-        "q4": { "type": "faq_item", "settings": { "question": "¿Tiene azúcar?", "answer": "<p>No tiene azúcar agregada. El dulzor viene de estevia (Reb A 95%). Por porción tiene menos de 1g de carbohidratos y 28 kcal. Apto para personas que cuidan su ingesta de azúcar.</p>" } },
-        "q5": { "type": "faq_item", "settings": { "question": "¿Cómo funciona la garantía de 14 noches?", "answer": "<p>Si tomás Pauze durante 14 noches y no notás diferencia en tu sueño, te devolvemos el monto íntegro como crédito en la tienda (válido 6 meses). No tenés que devolver el pack. Escribinos a contacto@pauze.store.</p>" } },
-        "q6": { "type": "faq_item", "settings": { "question": "¿Cuánto tarda el envío?", "answer": "<p>Despachamos en 7–15 días hábiles desde la confirmación del pago. CABA y GBA suele llegar en 3–7 días. Para el interior puede llegar hasta los 15 días según localidad.</p>" } }
+        "q1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Tiene melatonina?",
+            "answer": "<p>No. La melatonina en Argentina se considera medicamento y requiere receta médica. Pauze usa activos botánicos y aminoácidos (L-teanina, apigenina, magnesio glicinato) que acompañan los procesos naturales del cuerpo para entrar al sueño, sin efectos secundarios ni dependencia.</p>"
+          }
+        },
+        "q2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Es seguro tomarlo todos los días?",
+            "answer": "<p>Sí. Los tres activos son seguros para uso diario en adultos sanos. No generan dependencia ni tolerancia. Si tomás medicación o tenés alguna condición de salud, consultá con tu médico antes.</p>"
+          }
+        },
+        "q3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿En cuánto tiempo noto la diferencia?",
+            "answer": "<p>La mayoría nota mejoría en la primera semana, especialmente en qué tan rápido se quedan dormidas. Los efectos más profundos suelen verse a partir de las 3 semanas de uso consistente.</p>"
+          }
+        },
+        "q4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Tiene azúcar?",
+            "answer": "<p>No tiene azúcar agregada. El dulzor viene de estevia (Reb A 95%). Por porción tiene menos de 1g de carbohidratos y 28 kcal. Apto para personas que cuidan su ingesta de azúcar.</p>"
+          }
+        },
+        "q5": {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Cómo funciona la garantía de 14 noches?",
+            "answer": "<p>Si tomás Pauze durante 14 noches y no notás diferencia en tu sueño, te devolvemos el monto íntegro como crédito en la tienda (válido 6 meses). No tenés que devolver el pack. Escribinos a contacto@pauze.store.</p>"
+          }
+        },
+        "q6": {
+          "type": "faq_item",
+          "settings": {
+            "question": "¿Cuánto tarda el envío?",
+            "answer": "<p>Despachamos en 7–15 días hábiles desde la confirmación del pago. CABA y GBA suele llegar en 3–7 días. Para el interior puede llegar hasta los 15 días según localidad.</p>"
+          }
+        }
       },
-      "blocks_order": ["q1", "q2", "q3", "q4", "q5", "q6"],
       "settings": {
         "eyebrow": "Todo lo que necesitás saber",
         "title": "<p>Preguntas <em>frecuentes.</em></p>",
@@ -157,5 +331,11 @@
       }
     }
   },
-  "order": ["hero", "ingredients", "ritual", "reviews", "faq"]
+  "order": [
+    "hero",
+    "ingredients",
+    "ritual",
+    "reviews",
+    "faq"
+  ]
 }
