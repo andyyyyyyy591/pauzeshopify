@@ -1,7 +1,7 @@
 <header class="pauze-header" data-pauze-header>
   <div class="pauze-header__inner pauze-container">
 
-    {{- /* Hamburger mobile */ -}}
+    <!-- Hamburger mobile -->
     <button
       class="pauze-header__burger"
       aria-label="Abrir menú"
@@ -14,7 +14,7 @@
       <span class="pauze-header__burger-bar"></span>
     </button>
 
-    {{- /* Logo */ -}}
+    <!-- Logo -->
     <div class="pauze-header__logo">
       <a href="{{ routes.root_url }}" class="pauze-header__logo-link" aria-label="{{ shop.name }}">
         {%- if section.settings.logo != blank -%}
@@ -34,7 +34,7 @@
       </a>
     </div>
 
-    {{- /* Nav desktop */ -}}
+    <!-- Nav desktop -->
     <nav class="pauze-header__nav" aria-label="Navegación principal">
       <ul class="pauze-header__nav-list list-reset">
         {%- for link in section.settings.menu.links -%}
@@ -67,7 +67,7 @@
       </ul>
     </nav>
 
-    {{- /* Acciones */ -}}
+    <!-- Acciones -->
     <div class="pauze-header__actions">
       {%- if section.settings.show_search -%}
         <a href="{{ routes.search_url }}" class="pauze-header__action" aria-label="Buscar">
@@ -110,10 +110,10 @@
   </div>
 </header>
 
-{{- /* Overlay nav mobile */ -}}
+<!-- Overlay nav mobile -->
 <div class="pauze-nav-overlay" data-pauze-nav-overlay aria-hidden="true"></div>
 
-{{- /* Mobile nav drawer */ -}}
+<!-- Mobile nav drawer -->
 <nav
   id="pauze-mobile-nav"
   class="pauze-mobile-nav"

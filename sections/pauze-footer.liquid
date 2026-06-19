@@ -1,6 +1,6 @@
 <footer class="pauze-footer">
 
-  {{- /* Newsletter banner */ -}}
+  <!-- Newsletter banner -->
   {%- if section.settings.show_newsletter -%}
   <div class="pauze-footer__newsletter">
     <div class="pauze-container">
@@ -37,12 +37,12 @@
   </div>
   {%- endif -%}
 
-  {{- /* Main */ -}}
+  <!-- Main -->
   <div class="pauze-footer__main">
     <div class="pauze-container">
       <div class="pauze-footer__grid">
 
-        {{- /* Brand column */ -}}
+        <!-- Brand column -->
         <div class="pauze-footer__brand">
           <a href="{{ routes.root_url }}" class="pauze-footer__wordmark" aria-label="{{ shop.name }}">pauze</a>
           <p class="pauze-footer__tagline">{{ section.settings.tagline }}</p>
@@ -64,7 +64,7 @@
           </div>
         </div>
 
-        {{- /* Menu columns */ -}}
+        <!-- Menu columns -->
         {%- for block in section.blocks -%}
           {%- if block.type == 'menu_column' -%}
             <div class="pauze-footer__col" {{ block.shopify_attributes }}>
@@ -84,7 +84,7 @@
     </div>
   </div>
 
-  {{- /* Payment / shipping badges */ -}}
+  <!-- Payment / shipping badges -->
   <div class="pauze-footer__badges">
     <div class="pauze-container">
       <div class="pauze-footer__badges-inner">
@@ -108,12 +108,12 @@
     </div>
   </div>
 
-  {{- /* Wordmark decorativo */ -}}
+  <!-- Wordmark decorativo -->
   <div class="pauze-footer__deco-wrap" aria-hidden="true">
     <span class="pauze-footer__deco-wordmark">pauze</span>
   </div>
 
-  {{- /* Legal bar */ -}}
+  <!-- Legal bar -->
   <div class="pauze-footer__legal">
     <div class="pauze-container">
       <div class="pauze-footer__disclaimer">
