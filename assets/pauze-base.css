@@ -44,13 +44,13 @@
   --space-lg: 1.5rem;
   --space-xl: 2rem;
   --space-2xl: 3rem;
-  --space-3xl: 4rem;
-  --space-4xl: 6rem;
+  --space-3xl: 5rem;
+  --space-4xl: 7rem;
 
   /* Layout */
-  --container-max: 1280px;
+  --container-max: 1200px;
   --container-pad: 1.25rem;
-  --header-h: 64px;
+  --header-h: 68px;
 
   /* Radios */
   --radius-sm: 4px;
@@ -221,15 +221,15 @@ p, li {
 }
 
 .pauze-section {
-  padding-block: clamp(3rem, 6vw, 5rem);
+  padding-block: clamp(4rem, 7vw, 6.5rem);
 }
 
 .pauze-section--sm {
-  padding-block: clamp(2rem, 4vw, 3rem);
+  padding-block: clamp(2.5rem, 4vw, 4rem);
 }
 
 .pauze-section--lg {
-  padding-block: clamp(4rem, 8vw, 7rem);
+  padding-block: clamp(5rem, 10vw, 9rem);
 }
 
 /* Fondo alternado */
